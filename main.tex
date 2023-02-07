@@ -1,0 +1,227 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+\usepackage[portuguese]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{babel,arrows,positioning,chains,matrix,scopes,cd,quotes,calc,decorations.pathmorphing}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{algorithmic}
+\usepackage[portuguese, ruled, lined]{algorithm2e}
+\usepackage{setspace}
+\usepackage[T1]{fontenc}
+\usepackage{biblatex}
+\addbibresource{bib.bib}
+\usepackage{csquotes}
+
+%quiver
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    .. (\tikztotarget)\tikztonodes}},
+    settings/.code={\tikzset{quiver/.cd,#1}
+        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+    quiver/.cd,pos/.initial=0.35,height/.initial=0}
+
+% TikZ arrowhead/tail styles.
+\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
+\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
+\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
+% TikZ arrow styles.
+\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+
+\newtheorem{definition}{Definição}[section]
+\newtheorem{proposition}[definition]{Proposição}
+\newtheorem{lemma}[definition]{Lema}
+\newtheorem{axiom}[definition]{Axioma}
+\newtheorem{corollary}[definition]{Corolário}
+\newtheorem{theorem}[definition]{Teorema}
+\newtheorem{distribution}[definition]{Distribuição}
+\newtheorem{example}[definition]{Exemplo}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\DeclareMathOperator{\freeab}{Free_{Ab}}
+
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\module}{Mod}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\chain}{Ch}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\grad}{grad}
+
+\newcommand{\Mod}[1]{$\module_{#1}$}
+\newcommand{\Chain}[1]{$\chain(#1)$}
+
+\newcommand{\openset}[0]{{\phantom{}\subset}{\circ}\phantom{.}}
+
+\def\arrvline{\hfil\kern\arraycolsep\vline\kern-\arraycolsep\hfilneg}
+
+\begin{document}
+\begin{titlepage}
+    \center
+    \textsc{\textbf{\Large Iniciação Científica}}\\[0.5cm]
+    \textsc{\textbf{\large Relatório Final}}\\[0.5cm]
+    
+    \vspace{4cm}
+    
+    \rule{\linewidth}{0.5mm}\\[0.4cm]
+    {\huge \textbf{Aprendizado de máquina e geometria hiperbólica complexa}}
+    \rule{\linewidth}{0.5mm}\\[1.0cm]
+    
+    \vspace{1.0cm}
+    
+    \textbf{\Large{Universidade de São Paulo}}\\[0.2cm]
+    \textbf{\large{Instituto de Ciências Matemáticas e Computação}}
+    \vspace{4cm}
+    
+    \begin{flushright}
+        \begin{tabular}{@{}ll@{}}
+            \hspace{1cm}\textbf{\large{Aluno:}} & \textbf{\large{Lucas Giraldi Almeida Coimbra}}\\
+            \hspace{1cm}\textbf{\large{Orientador:}} & \textbf{\large{Carlos Henrique Grossi Ferreira}}\\
+            \end{tabular}
+    \end{flushright}
+    
+    \vfill
+    \Large{Junho de 2023}\\[0.2cm]
+    \Large{São Carlos}
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introdução}
+
+\section{Geometria hiperbólica}
+
+\subsection{Variedades e métricas riemannianas}
+
+Uma \textit{variedade topológica de dimensão $n$} é um espaço topológico $M$ Hausdorff com base enumerável que é \textit{localmente euclidiano de dimensão $n$}, isso é, para cada $p \in M$ existe um aberto $U$ e um homeomorfismo $\phi \colon U \to V \openset \mathbb{R}^n$. O par $(U, \phi)$ será comumente chamado de \textit{carta sobre $p$}. Se $(V, \psi)$ é uma outra carta em $M$ tal que $U \cap V \neq \varnothing$, chamamos de \textit{mapas de transição} as funções \begin{equation}
+    \phi \circ \psi^{-1} \colon \psi(U \cap V) \to \mathbb{R}^n \quad \text{e} \quad \psi \circ \phi^{-1} \colon \phi(U \cap V) \to \mathbb{R}^n.
+\end{equation}
+Se os mapas de transição forem suaves, diremos que $(U, \phi)$ e $(V, \psi)$ são \textit{compatíveis}. Uma \textit{estrutura diferenciável} em $M$ é uma cobertura de $M$ por cartas que são duas a duas compatíveis. Dizemos que $M$ é \textit{suave} ou \textit{diferenciável} se possuir uma estrutura diferenciável.
+
+A partir de agora, toda carta estará em uma estrutura diferenciável previamente fixada, e portanto toda variedade será suave. Se $p \in M$ dizemos que $F \colon M \to N$ é \textit{suave em $p$} se existirem $(U, \phi)$ carta sobre $p$ e $(V, \psi)$ carta sobre $F(p)$ tais que $\psi \circ F \circ \phi^{-1}$ é suave. A função $F$ é \textit{suave em $U \openset M$} se for suave em todo ponto de $U$, e é apenas \textit{suave} se for suave em todo ponto de $M$.
+
+Uma \textit{curva} em $M$ é um mapa suave $c \colon I \to M$ onde $I$ é um intervalo de $\mathbb{R}$. Se $p \in M$, definimos por $C^\infty_p$ como o conjunto dos mapas $f \colon U \openset M \to \mathbb{R}$ suaves, onde $U$ é uma vizinhança qualquer de $p$. Esse espaço é uma álgebra com as três operações: \begin{itemize}
+    \item se $f \colon U \to \mathbb{R}$ e $g \colon V \to \mathbb{R}$, definimos $f + g \colon U \cap V \to \mathbb{R}$ por $(f+g)(p) = f(p) + g(p)$;
+    \item se $f \colon U \to \mathbb{R}$ e $\lambda \in \mathbb{R}$, definimos $\lambda f \colon U \to \mathbb{R}$ por $(\lambda f)(p) = \lambda f(p)$;
+    \item se $f \colon U \to \mathbb{R}$ e $g \colon V \to \mathbb{R}$, definimos $fg \colon U \cap V \to \mathbb{R}$ por $(fg)(p) = f(p)g(p)$.
+\end{itemize}
+Dada uma curva $c \colon ]-\varepsilon, \varepsilon[ \to M$, definimos $c'(0)$ como sendo um mapa $c'(0) \colon C_p^\infty \to \mathbb{R}$ dado por \begin{equation}
+    c'(0)f = \left.\frac{d}{dt}\right|_{t = 0} (f \circ c)(t).
+\end{equation}
+Esse mapa é linear e satisfaz a \textit{regra de Leibniz}, isso é, \begin{equation}
+    c'(0)(fg) = f(c(0)) \cdot c'(0)g + c'(0)f \cdot g(c(0)). 
+\end{equation}
+
+Se $p \in M$, o \textit{espaço tangente a $M$ em $p \in M$} como o conjunto \begin{equation}
+    T_pM = \{c'(0) \mid c \colon ]-\varepsilon, \varepsilon[ \to \mathbb{R} \text{ e } c(0) = p\}.
+\end{equation}
+Se $M$ tem dimensão $n$, então $T_pM$ é um espaço vetorial de dimensão $n$. Seus elementos são chamados de \textit{vetores tangentes}. Uma \textit{métrica riemanniana} em $M$ é a associação de um produto interno $\mathfrak{g}_p(-,-)$ em $T_pM$ para cada $p \in M$. Mais do que isso, pedimos que essa associação seja suave. Entenderemos o que isso significa a seguir.
+
+Um \textit{campo vetorial} em $M$ é uma associação $X$ de um vetor $X_p \in T_pM$ para cada $p \in M$. Se $\phi = (x^1, \dots, x^n)$ é uma carta sobre $p \in M$ e $r = (r^1, \dots, r^n)$ são as coordenadas em $\mathbb{R}^n$, definimos as derivadas parciais de $f \in C_p^\infty$ por \begin{equation}
+    \left.\frac{\partial f}{\partial x^i}\right|_{p} = \left.\frac{\partial}{\partial r^i}\right|_{\phi(p)} (f \circ \phi^{-1})(r).
+\end{equation}
+Cada derivada parcial em $p$ pode ser vista como um elemento de $T_pM$, afinal, se $e^1, \dots, e^n$ é a base canônica de $\mathbb{R}^n$, então dadas as curvas $c^i(t) = t e^i$ temos \begin{equation}
+    \left.\frac{\partial}{\partial x^i}\right|_p = (\phi^{-1} \circ c^i)'(0).
+\end{equation}
+Esses vetores tangentes formam uma base para $T_pM$.
+
+Se $(U, \phi)$ é uma em $M$ e $X$ é um campo vetorial em $M$, então para cada $p \in M$ podemos escrever, de maneira única, \begin{equation}
+    X_p = \sum_{k = 1}^n a^i(p)\left.\frac{\partial}{\partial x^i}\right|_p.
+\end{equation}
+Dizemos que o campo vetorial $X$ é \textit{suave} se existir uma cobertura de $M$ por cartas tais que os mapas $a^i$ são sempre suaves. Ao dizermos que a métrica riemanniana tem que ser suave, queremos dizer que, para quaisquer $X, Y$ campos suaves em $M$, o mapa $p \mapsto \mathfrak{g}_p(X_p, Y_p)$ tem que ser suave. Uma \textit{variedade riemanniana} é uma variedade suave equipada com uma métrica riemanniana.
+
+\subsection{Geodésicas}
+
+Denotamos o conjunto de todos os campos suaves em $M$ por $\mathfrak{X}(M)$. Se $M = \mathbb{R}^n$, vamos entender quem é a derivada direcional. Se $X = (v^1, \dots, v^n) \in \mathbb{R}^n$ e $X_p$ é o vetor tangente a $p$ na direção $X$, então dada $f \colon \mathbb{R}^n \to \mathbb{R}$ definimos a \textit{derivada direcional de $f$ na direção $X_p$} \begin{equation}
+    D_{X_p}f = \lim_{t \to 0} \frac{f(p + tX) - f(p)}{t} = \sum_{k = 1}^n v^k \left.\frac{\partial f}{\partial x^i}\right|_p =  X_pf.
+\end{equation}
+Podemos então trocar $f$ por um campo vetorial suave $Y = \sum b^i \partial/\partial x^i$ e obtermos a \textit{derivada direcional de $Y$ na direção $X_p$} \begin{equation}
+    D_{X_p}Y = \sum_{k = 1}^n D_{X_p}b^i \left.\frac{\partial}{\partial x^i}\right|_p.
+\end{equation}
+Note que a derivada $D_{X_p}Y$ é um vetor tangente em $p$. Dessa forma, se $X$ é um campo vetorial em $\mathbb{R}^n$ podemos definir $D_XY$ como o campo vetorial que, em $p$, vale $D_{X_p}Y$. Esse mapa é a \textit{derivada direcional de $Y$ na direção $X$}.
+
+Agora vamos generalizar a derivada direcional em $\mathbb{R}^n$ para uma variedade riemanniana qualquer. Uma \textit{conexão afim} em $M$ é um mapa \begin{align*}
+    \nabla \colon \mathfrak{X}(M) \times \mathfrak{X}(M) &\to \mathfrak{X}(M) \\ (X, Y) &\mapsto \nabla_XY
+\end{align*}
+que satisfaz as seguintes propriedades:
+\begin{itemize}
+    \item se $C^\infty(M)$ é o conjunto dos mapas suaves $M \to \mathbb{R}$, então $\nabla$ é $C^{\infty}(M)$-linear na primeira coordenada;
+    \item $\nabla$ satisfaz a regra de Leibniz na segunda coordenada, isso é, se $f \in C^{\infty}(M)$, então \begin{equation}
+        \nabla_X(fY) = (Xf)Y + f\nabla_XY,
+    \end{equation} onde $Xf$ é o mapa suave dado por $(Xf)(p) = X_pf$.
+\end{itemize}
+
+Um campo vetorial \textit{ao longo} de uma curva $c \colon I \to M$ é a associação $V$ de um vetor $V(t) \in T_{c(t)}M$ para cada $t \in I$. Dizemos que $V$ é \textit{suave} se, para cada $f \colon M \to \mathbb{R}$, $(Vf)(t) = V(t)f$ é suave.
+
+Se $c \colon I \to \mathbb{R}^n$ é uma curva e $V$ é um campo ao longo de $c$, temos \begin{equation}
+    V(t) = \sum_{k = 1}^n v^i(t)\left.\frac{\partial}{\partial x^i}\right|_{c(t)},
+\end{equation}
+portanto podemos definir a \textit{derivada de $V$ com respeito a $t$} como sendo o campo \begin{equation}
+    \frac{dV}{dt} = \sum_{k = 1}^n \frac{dv^i}{dt}\frac{\partial}{\partial x^i}.
+\end{equation} Essa derivada satisfaz algumas propriedades importantes:
+\begin{itemize}
+    \item ela é linear com respeito a $V$, isso é, se $\lambda \in \mathbb{R}$ e $U$ é outro campo ao longo de $c$, então \begin{equation}
+        \frac{d(\lambda V + U)}{dt} = \lambda\frac{dV}{dt} + \frac{dU}{dt};
+    \end{equation}
+
+    \item ela satisfaz a regra de Leibniz, isso é, se $f \colon I \to \mathbb{R}$ (lembrando aqui que $I$ é o domínio de $c$) é suave, então \begin{equation}
+        \frac{d(fV)}{dt} = \frac{df}{dt}V + f\frac{dV}{dt};
+    \end{equation}
+
+    \item ela é compatível com a derivada direcional em $\mathbb{R}^n$, isso é, se $V$ se estende para um campo $\tilde{V}$ em $\mathbb{R}^n$, então \begin{equation}
+        \frac{dV}{dt} = D_{c'(t)}\tilde{V}.
+    \end{equation}
+\end{itemize}
+
+Vamos agora generalizar o conceito da derivada de $V$ para uma variedade $M$ qualquer, utilizando de conexões afins. Se $\nabla$ é uma conexão afim em $M$ e $c \colon I \to \mathbb{R}$ é uma curva, então definimos uma \textit{derivada covariante} como um operador $D/dt$ que, para cada campo $V$ ao londo de $c$ associa um outro campo $DV/dt$ ao longo de $c$. Pedimos que essa associação satisfaça as três propriedades que a derivada definida acima satisfaz: \begin{itemize}
+    \item $D/dt$ é linear, isso é, se $V$ e $U$ são campos ao longo de $c$ e $\lambda \in \mathbb{R}$ então \begin{equation}
+        \frac{D(\lambda V + U)}{dt}  = \lambda\frac{DV}{dt} + \frac{DU}{dt};
+    \end{equation}
+    
+    \item $D/dt$ satisfaz a regra de Leibniz, isso é, se $f \colon I \to \mathbb{R}$ é suave, então \begin{equation}
+        \frac{D(fV)}{dt} = \frac{df}{dt}V + f\frac{DV}{dt};
+    \end{equation}
+
+    \item $D/dt$ é compatível com a conexão afim, isso é: se $\tilde{V}$ é um campo em $M$ que estende $V$, então \begin{equation}
+        \frac{DV}{dt} = \nabla_{c'(t)}V.
+    \end{equation}
+\end{itemize}
+
+Definimos acima o que seria \textbf{uma} derivada covariante, mas acontece que, fixadas uma conexão e uma curva, sempre existe uma e apenas uma derivada covariante, portanto podemos falar \textbf{da} derivada covariante.
+
+Se $c \colon I \to M$ é uma curva, então dizemos que $c$ é uma \textit{geodésica} se a derivada covariante $DT/dt$ do seu campo velocidade $T(t) = c'(t)$ é nula. Note que a existência de uma conexão, e portanto de uma derivada covariante, não depende da existência de uma métrica riemanniana. Porém, caso a variedade $M$ possua uma métrica, vamos sempre assumir que a conexão considerada é a única conexão riemanniana.
+
+\subsection{Modelos para a geometria hiperbólica}
+
+\section{Redes neurais}
+
+\section{Misturando tudo}
+
+\nocite{*}
+\printbibliography
+\end{document}
