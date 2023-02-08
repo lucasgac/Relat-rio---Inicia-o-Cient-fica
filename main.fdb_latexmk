@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber main"] 1675673079 "main.bcf" "main.bbl" "main" 1675763398
+["biber main"] 1675850246 "main.bcf" "main.bbl" "main" 1675851731
   "bib.bib" 1675673078 726 e7f6d2fe2994fcbcd923aa11abbbf5cf ""
-  "main.bcf" 1675763397 107035 5069e6d4febe1c7538115afd0250f7d2 "pdflatex"
+  "main.bcf" 1675851730 107035 5069e6d4febe1c7538115afd0250f7d2 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1675763394 "c:/Users/lucas/OneDrive/Área de Trabalho/Relatório/main.tex" "main.pdf" "main" 1675763398
+["pdflatex"] 1675851728 "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" "main.pdf" "main" 1675851731
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1675672081 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1675662346 25420 c9d0b9576c7e51dd6a11dfa5428328b8 ""
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1675662349 31952 b6a65a8cf2226fd5bfc8f20bed9d1044 ""
@@ -52,6 +52,7 @@
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1247596667 37912 07513ec114ac737ab54cea0152f4424b ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1247596667 36281 c355509802a035cadc5f15869451dcee ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
+  "C:/Users/lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1247596667 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1247596666 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
@@ -229,13 +230,13 @@
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/tools/xspace.sty" 1636710260 4545 d84d0b20a11b9c36c6ecf45697be591c ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1636284872 56029 3f7889dab51d620aa43177c391b7b190 ""
-  "c:/Users/lucas/OneDrive/Área de Trabalho/Relatório/main.tex" 1675763393 13922 cb03a52d66b39c10ba5f8bca8cb1fe68 ""
-  "main.aux" 1675763397 1862 3ccef0d59dc26e20d685677ed510f6da "pdflatex"
-  "main.bbl" 1675673082 4278 901d775dbf55a41dcf57039f10617e14 "biber main"
-  "main.out" 1675763397 1086 f07196618f5bd01a6db731fd8e863892 "pdflatex"
-  "main.run.xml" 1675763397 2301 7b8f8c29d436b67db3cb3c010012f29b "pdflatex"
-  "main.tex" 1675763393 13922 cb03a52d66b39c10ba5f8bca8cb1fe68 ""
-  "main.toc" 1675763397 600 db6e6ce8f10fcfe46a8de36f8396ebd2 "pdflatex"
+  "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" 1675851723 19528 26ec88c175c83338687d0ebf549f0a5a ""
+  "main.aux" 1675851730 2165 9869e24d5c2c9fc906f4c4689ddad67e "pdflatex"
+  "main.bbl" 1675850249 4278 901d775dbf55a41dcf57039f10617e14 "biber main"
+  "main.out" 1675851730 1671 78865d490642271ad11912bc49185c51 "pdflatex"
+  "main.run.xml" 1675851730 2301 7b8f8c29d436b67db3cb3c010012f29b "pdflatex"
+  "main.tex" 1675851723 19528 26ec88c175c83338687d0ebf549f0a5a ""
+  "main.toc" 1675851730 821 80a20821ec5d57f871ba72b20af65e1b "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"

@@ -1,6 +1,6 @@
-PWD c:\Users\lucas\OneDrive\Área de Trabalho\Relatório
+PWD c:\Users\lucas\OneDrive\Área de Trabalho\Relatorio---Inicia--o-Cient-fica
 INPUT C:\Users\lucas\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\lucas\OneDrive\Área de Trabalho\Relatório\main.tex
+INPUT c:\Users\lucas\OneDrive\Área de Trabalho\Relatorio---Inicia--o-Cient-fica\main.tex
 OUTPUT main.log
 INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
@@ -1172,6 +1172,8 @@ INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\c
 INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
+INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
 INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
 INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
 INPUT C:\Users\lucas\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb

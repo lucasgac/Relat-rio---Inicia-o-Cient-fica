@@ -155,7 +155,7 @@ Se $(U, \phi)$ é uma em $M$ e $X$ é um campo vetorial em $M$, então para cada
 \end{equation}
 Dizemos que o campo vetorial $X$ é \textit{suave} se existir uma cobertura de $M$ por cartas tais que os mapas $a^i$ são sempre suaves. Ao dizermos que a métrica riemanniana tem que ser suave, queremos dizer que, para quaisquer $X, Y$ campos suaves em $M$, o mapa $p \mapsto \mathfrak{g}_p(X_p, Y_p)$ tem que ser suave. Uma \textit{variedade riemanniana} é uma variedade suave equipada com uma métrica riemanniana.
 
-\subsection{Geodésicas}
+\subsection{Conexões e derivada covariante}
 
 Denotamos o conjunto de todos os campos suaves em $M$ por $\mathfrak{X}(M)$. Se $M = \mathbb{R}^n$, vamos entender quem é a derivada direcional. Se $X = (v^1, \dots, v^n) \in \mathbb{R}^n$ e $X_p$ é o vetor tangente a $p$ na direção $X$, então dada $f \colon \mathbb{R}^n \to \mathbb{R}$ definimos a \textit{derivada direcional de $f$ na direção $X_p$} \begin{equation}
     D_{X_p}f = \lim_{t \to 0} \frac{f(p + tX) - f(p)}{t} = \sum_{k = 1}^n v^k \left.\frac{\partial f}{\partial x^i}\right|_p =  X_pf.
@@ -175,6 +175,16 @@ que satisfaz as seguintes propriedades:
         \nabla_X(fY) = (Xf)Y + f\nabla_XY,
     \end{equation} onde $Xf$ é o mapa suave dado por $(Xf)(p) = X_pf$.
 \end{itemize}
+
+Conexões e métricas riemannianas não estão sempre conectadas. Porém, se $M$ é uma variedade riemanniana e $\nabla$ uma conexão afim em $M$, então podemos falar sobre alguns aspectos geométricos de $\nabla$. Definimos o \textit{tensor torção} de $\nabla$ como sendo o mapa $T(X, Y) = \nabla_XY - \nabla_YX - [X,Y]$, onde $[X,Y]_pf = X_p(Yf) - Y_p(Xf)$ é o \textit{bracket de Lie}. Do mesmo modo, definimos o \textit{tensor curvatura} de $\nabla$ como sendo o mapa $R(X,Y) = [\nabla_X, \nabla_Y] - \nabla_{[X,Y]}$, isso é, para um campo vetorial suave $Z$, temos \begin{equation}
+    R(X,Y)Z = \nabla_X\nabla_YZ - \nabla_Y\nabla_XZ - \nabla_{[X, Y]}Z.
+\end{equation}
+
+Dizemos que uma conexão $\nabla$ em uma variedade riemanniana $M$ é \textit{compatível com a métrica} se $Z\mathfrak{g}(X,Y) = \mathfrak{g}(\nabla_ZX, Y) + \mathfrak{g}(X, \nabla_ZY)$. Uma \textit{conexão de Levi-Civita} é uma conexão compatível com a métrica e que satisfaz $T(X,Y) = 0$ para todos $X, Y$ campos suaves em $M$.
+
+\begin{proposition}
+    Toda variedade riemanniana possui uma, e apenas uma, conexão de Levi-Civita.
+\end{proposition}
 
 Um campo vetorial \textit{ao longo} de uma curva $c \colon I \to M$ é a associação $V$ de um vetor $V(t) \in T_{c(t)}M$ para cada $t \in I$. Dizemos que $V$ é \textit{suave} se, para cada $f \colon M \to \mathbb{R}$, $(Vf)(t) = V(t)f$ é suave.
 
@@ -214,7 +224,54 @@ Vamos agora generalizar o conceito da derivada de $V$ para uma variedade $M$ qua
 
 Definimos acima o que seria \textbf{uma} derivada covariante, mas acontece que, fixadas uma conexão e uma curva, sempre existe uma e apenas uma derivada covariante, portanto podemos falar \textbf{da} derivada covariante.
 
-Se $c \colon I \to M$ é uma curva, então dizemos que $c$ é uma \textit{geodésica} se a derivada covariante $DT/dt$ do seu campo velocidade $T(t) = c'(t)$ é nula. Note que a existência de uma conexão, e portanto de uma derivada covariante, não depende da existência de uma métrica riemanniana. Porém, caso a variedade $M$ possua uma métrica, vamos sempre assumir que a conexão considerada é a única conexão riemanniana.
+\subsection{Geodésicas e transporte paralelo}
+
+Se $c \colon I \to M$ é uma curva, então dizemos que $c$ é uma \textit{geodésica} se a derivada covariante $DT/dt$ do seu campo velocidade $T(t) = c'(t)$ é nula. Note que a existência de uma conexão, e portanto de uma derivada covariante, não depende da existência de uma métrica riemanniana. Porém, caso a variedade $M$ possua uma métrica, vamos sempre assumir que a conexão considerada é a conexão de Levi-Civita em $M$.
+
+\begin{proposition}
+    Geodésicas em variedades riemannianas possuem velocidade constante, isso é, se $c \colon I \to M$ é uma geodésica, então $||c'(t)||$ é constante para cada $t \in I$.
+\end{proposition}
+
+Seja $M$ uma variedade suave com uma conexão $\nabla$. Se $(U, x^1, \dots, x^n)$ é uma carta em $M$, então temos os campos vetoriais $\partial_i = \partial/\partial x^i$. Sabemos que todo campo vetorial em $U$ se escreve como combinação linear destes, e portanto temos \begin{equation}
+    \nabla_{\partial_i}\partial_j = \sum_{k = 1}^n \Gamma^k_{ij} \partial_k.
+\end{equation}
+Os coeficientes $\Gamma^k_{ij}$ são chamados de \textit{símbolos de Christoffel de $\nabla$ em $(U, x^1, \dots, x^n)$}.
+
+Sejam $M$ uma variedade com uma conexão $\nabla$, $(U, \phi) = (U, x^1, \dots, x^n)$ uma carta em $M$ e $\Gamma^k_{ij}$ os seus símbolos de Christoffel. Note que, se $c \colon I \to M$ é uma curva e $y = \phi \circ c$, então temos \begin{equation}
+    T = c'(t) = \sum_{k = 1}^n \frac{dy^k}{dt}\partial_k.
+\end{equation} Dessa maneira, segue que \begin{align}
+    \frac{DT}{dt} &= \sum_{j = 1}^n \frac{d^2y^j}{dt^2}\partial_j + \sum_{j = 1}^n \frac{dy^j}{dt}\frac{D\partial_j}{dt} = \sum_{j = 1}^n \frac{d^2y^j}{dt^2}\partial_j + \sum_{j = 1}^n \frac{dy^j}{dt} \nabla_{c'(t)}\partial_j \\ &= \sum_{j = 1}^n \frac{d^2y^j}{dt^2}\partial_j + \sum_{i,j = 1}^n \frac{dy^j}{dt} \nabla_{\frac{dy^i}{dt}\partial_i}\partial_j = \sum_{j = 1}^n \frac{d^2y^j}{dt^2}\partial_j + \sum_{i,j = 1}^n \frac{dy^j}{dt}\frac{dy^i}{dt}\nabla_{\partial_i}\partial_j \\ &= \sum_{k = 1}^n \frac{d^2y^k}{dt^2}\partial_k + \sum_{i,j,k = 1}^n \frac{dy^j}{dt}\frac{dy^i}{dt}\Gamma^k_{ij}\partial_k = \sum_{k = 1}^n \left(\frac{d^2y^k}{dt^2} + \sum_{i,j=1}^n \frac{dy^i}{dt}\frac{dy^j}{dt}\Gamma_{ij}^k\right)\partial_k.
+\end{align} Portanto, temos o seguinte resultado.
+
+\begin{theorem}
+    Se $M$ é uma variedade suave com uma conexão $\nabla$ e $c \colon I \to M$ é uma curva, então $c$ é uma geodésica se, com respeito a qualquer carta $(U, \phi) = (U, x^1, \dots, x^n)$, as componentes de $y = \phi \circ c$ satisfazem o sistema de EDOs \begin{equation}
+        \frac{d^2y^k}{dt^2} + \sum_{i,j=1}^n \frac{dy^i}{dt}\frac{dy^j}{dt}\Gamma_{ij}^k = 0
+    \end{equation}
+\end{theorem}
+
+As equações do sistema acima são chamadas de \textit{equações geodésicas}. Pelo teorema de existência e unicidade de solução para EDOs temos a existência e unicidade de geodésicas.
+
+\begin{theorem}
+    Seja $M$ uma variedade suave com uma conexão $\nabla$. Dado $p \in M$ e $X_p \in T_pM$, existe uma geodésica $c \colon I \to M$ tal que $c(0) = p$ e $c'(0) = X_p$. Mais do que isso, essa geodésica é única no sentido de que qualquer outra geodésica satisfazendo essas propriedades deve coincidir com $c$ na intersecção de seus domínios.
+\end{theorem}
+
+Um \textit{difeomorfismo} entre variedades suaves $M$ e $N$ é um mapa $F \colon M \to N$ suave, bijetor e com inversa suave. Se $M$ e $N$ forem riemannianas, dizemos que $F$ é uma \textit{isometria} se, para todos $p \in M$ e $X_p, Y_p \in T_pM$, temos \begin{equation}
+    \mathfrak{g}_p(X_p, Y_p) = \mathfrak{g}_{F(p)}(D_pF(X_p), D_pF(Y_p)).
+\end{equation}
+
+\begin{proposition}
+    Isometrias preservam conexões de Levi-Civita. Mais ainda, mapas que preservamos conexões, preservam geodésicas. Como corolário, isometrias preservam geodésicas.
+\end{proposition}
+
+Se $c \colon I \to M$ é uma curva e $V$ é um campo ao longo de $c$, então dizemos que $V$ é \textit{paralelo} se $DV/Dt = 0$. Dessa forma, uma geodésica é uma curva cujo campo velocidade é paralelo. Fixado $X_p \in T_{c(t_0)}M$, existe um único campo $V$ ao longo de $c$, paralelo, tal que $V(t_0) = X_p$. Se $c \colon [a,b] \to M$ é uma curva e $V$ é um campo paralelo ao longo de $c$, dizemos que $V(b)$ é obtido a partir de $V(a)$ por \textit{translação paralela}. Dizemos que $V(b)$ é o \textit{transporte paralelo} de $V(a)$ ao longo de $c$.
+
+\begin{proposition}
+    Se $V$ e $W$ são paralelos ao longo de $c$, então $||V||$ e $\mathfrak{g}(V, W)$ são constantes.
+\end{proposition}
+
+\subsection{Mapa exponencial e mapa logarítmico}
+
+Uma geodésica $c \colon I \to M$ é \textit{maximal} se não podemos estender $c$ para um intervalo maior sem que a curva deixe de ser uma geodésica.
 
 \subsection{Modelos para a geometria hiperbólica}
 
