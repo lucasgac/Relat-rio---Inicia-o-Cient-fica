@@ -4,7 +4,7 @@
 \contentsline {subsection}{\numberline {2.1}Variedades e métricas riemannianas}{2}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Conexões e derivada covariante}{3}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Geodésicas e transporte paralelo}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Mapa exponencial e mapa logarítmico}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.4}Mapa exponencial e mapa logarítmico}{6}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Modelos para a geometria hiperbólica}{6}{subsection.2.5}%
 \contentsline {section}{\numberline {3}Redes neurais}{6}{section.3}%
 \contentsline {section}{\numberline {4}Misturando tudo}{6}{section.4}%

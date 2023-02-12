@@ -68,6 +68,7 @@
 \DeclareMathOperator{\cl}{cl}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Exp}{Exp}
 
 \newcommand{\Mod}[1]{$\module_{#1}$}
 \newcommand{\Chain}[1]{$\chain(#1)$}
@@ -251,7 +252,7 @@ Sejam $M$ uma variedade com uma conexão $\nabla$, $(U, \phi) = (U, x^1, \dots, 
 
 As equações do sistema acima são chamadas de \textit{equações geodésicas}. Pelo teorema de existência e unicidade de solução para EDOs temos a existência e unicidade de geodésicas.
 
-\begin{theorem}
+\begin{theorem}\label{geodesicas_existencia}
     Seja $M$ uma variedade suave com uma conexão $\nabla$. Dado $p \in M$ e $X_p \in T_pM$, existe uma geodésica $c \colon I \to M$ tal que $c(0) = p$ e $c'(0) = X_p$. Mais do que isso, essa geodésica é única no sentido de que qualquer outra geodésica satisfazendo essas propriedades deve coincidir com $c$ na intersecção de seus domínios.
 \end{theorem}
 
@@ -260,18 +261,20 @@ Um \textit{difeomorfismo} entre variedades suaves $M$ e $N$ é um mapa $F \colon
 \end{equation}
 
 \begin{proposition}
-    Isometrias preservam conexões de Levi-Civita. Mais ainda, mapas que preservamos conexões, preservam geodésicas. Como corolário, isometrias preservam geodésicas.
+    Isometrias preservam conexões de Levi-Civita. Mais ainda, mapas que preservam conexões, preservam geodésicas. Como corolário, isometrias preservam geodésicas.
 \end{proposition}
 
 Se $c \colon I \to M$ é uma curva e $V$ é um campo ao longo de $c$, então dizemos que $V$ é \textit{paralelo} se $DV/Dt = 0$. Dessa forma, uma geodésica é uma curva cujo campo velocidade é paralelo. Fixado $X_p \in T_{c(t_0)}M$, existe um único campo $V$ ao longo de $c$, paralelo, tal que $V(t_0) = X_p$. Se $c \colon [a,b] \to M$ é uma curva e $V$ é um campo paralelo ao longo de $c$, dizemos que $V(b)$ é obtido a partir de $V(a)$ por \textit{translação paralela}. Dizemos que $V(b)$ é o \textit{transporte paralelo} de $V(a)$ ao longo de $c$.
 
 \begin{proposition}
-    Se $V$ e $W$ são paralelos ao longo de $c$, então $||V||$ e $\mathfrak{g}(V, W)$ são constantes.
+    Se $V$ e $W$ são paralelos ao longo de $c$ em uma variedade riemanniana $M$, então $||V||$ e $\mathfrak{g}(V, W)$ são constantes.
 \end{proposition}
 
 \subsection{Mapa exponencial e mapa logarítmico}
 
-Uma geodésica $c \colon I \to M$ é \textit{maximal} se não podemos estender $c$ para um intervalo maior sem que a curva deixe de ser uma geodésica.
+Uma geodésica $c \colon I \to M$ é \textit{maximal} se não podemos estender $c$ para um intervalo maior do que $I$ sem que a curva deixe de ser uma geodésica. Do Teorema \ref{geodesicas_existencia} temos que, dado $p \in M$ e $X_p \in T_pM$ existe uma única geodésica maximal $c$ com $c(0) = p$ e $c'(0) = X_p$. Vamos denotar essa geodésica por $\gamma_{X_p}$.
+
+O \textit{mapa exponencial} em um ponto $p \in M$ é a função dada por $\Exp_p(X_p) = \gamma_{X_p}(1)$. Note que podemos assumir que $\gamma_{X_p}$ sempre está definida em $1$, pois caso não esteja, basta reparametrizá-la por algum mapa da forma $\phi(t) = kt$.
 
 \subsection{Modelos para a geometria hiperbólica}
 
