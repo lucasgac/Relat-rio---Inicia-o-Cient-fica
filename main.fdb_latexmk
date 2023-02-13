@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1676315165 "main.bcf" "main.bbl" "main" 1676318205 0
+["biber main"] 1676315165 "main.bcf" "main.bbl" "main" 1676321269 0
   "./bib.bib" 1676310646 726 e7f6d2fe2994fcbcd923aa11abbbf5cf ""
-  "main.bcf" 1676318204 107252 b288265ccab7ff59a53e7f14e94fbdf5 "pdflatex"
+  "main.bcf" 1676321268 107252 b288265ccab7ff59a53e7f14e94fbdf5 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1676318202 "c:/Users/11219428/Documents/GitHub/Relat-rio---Inicia-o-Cient-fica/main.tex" "main.pdf" "main" 1676318205 0
+["pdflatex"] 1676321266 "c:/Users/11219428/Documents/GitHub/Relat-rio---Inicia-o-Cient-fica/main.tex" "main.pdf" "main" 1676321269 0
   "c:/Users/11219428/Desktop/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1676311506 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/Users/11219428/Desktop/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1676311506 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/Users/11219428/Desktop/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1676312061 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -233,13 +233,13 @@
   "c:/Users/11219428/Desktop/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1676314498 4662850 a0d88b591ffcba145de8e75a0f3e1566 ""
   "c:/Users/11219428/Desktop/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1676314638 7880064 2d432a6c712edf104878e84b4801fc19 ""
   "c:/Users/11219428/Desktop/texlive/2022/texmf.cnf" 1676314475 713 e69b156964470283e0530f5060668171 ""
-  "c:/Users/11219428/Documents/GitHub/Relat-rio---Inicia-o-Cient-fica/main.tex" 1676318201 21509 ac55dc85e4309bd87417f346250177c3 ""
-  "main.aux" 1676318204 2532 308f8a46559dba896f7952f043f3bfe4 "pdflatex"
+  "c:/Users/11219428/Documents/GitHub/Relat-rio---Inicia-o-Cient-fica/main.tex" 1676321265 21504 f1ba0205f26f86fecb46dea022d27f0b ""
+  "main.aux" 1676321268 2532 308f8a46559dba896f7952f043f3bfe4 "pdflatex"
   "main.bbl" 1676315194 4278 901d775dbf55a41dcf57039f10617e14 "biber main"
-  "main.out" 1676318204 1928 a842cdce4e94168e9e36df3786b262b8 "pdflatex"
-  "main.run.xml" 1676318204 2301 7b8f8c29d436b67db3cb3c010012f29b "pdflatex"
-  "main.tex" 1676318201 21509 ac55dc85e4309bd87417f346250177c3 ""
-  "main.toc" 1676318204 981 1b68960a0237ef32b0923aaf79e76911 "pdflatex"
+  "main.out" 1676321268 1928 a842cdce4e94168e9e36df3786b262b8 "pdflatex"
+  "main.run.xml" 1676321268 2301 7b8f8c29d436b67db3cb3c010012f29b "pdflatex"
+  "main.tex" 1676321265 21504 f1ba0205f26f86fecb46dea022d27f0b ""
+  "main.toc" 1676321268 981 1b68960a0237ef32b0923aaf79e76911 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
