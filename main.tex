@@ -69,6 +69,7 @@
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\codim}{codim}
 
 \newcommand{\Mod}[1]{$\module_{#1}$}
 \newcommand{\Chain}[1]{$\chain(#1)$}
@@ -270,11 +271,13 @@ Se $c \colon I \to M$ é uma curva e $V$ é um campo ao longo de $c$, então diz
     Se $V$ e $W$ são paralelos ao longo de $c$ em uma variedade riemanniana $M$, então $||V||$ e $\mathfrak{g}(V, W)$ são constantes.
 \end{proposition}
 
+\subsection{Jacobiana e teorema da função inversa}
+
 \subsection{Mapa exponencial e mapa logarítmico}
 
 Uma geodésica $c \colon I \to M$ é \textit{maximal} se não podemos estender $c$ para um intervalo maior do que $I$ sem que a curva deixe de ser uma geodésica. Do Teorema \ref{geodesicas_existencia} temos que, dado $p \in M$ e $X_p \in T_pM$ existe uma única geodésica maximal $c$ com $c(0) = p$ e $c'(0) = X_p$. Vamos denotar essa geodésica por $\gamma_{X_p}$.
 
-O \textit{mapa exponencial} em um ponto $p \in M$ é a função dada por $\Exp_p(X_p) = \gamma_{X_p}(1)$. Esse mapa não está necessariamente definido para todo $X_p \in T_pM$, visto que nem sempre $\gamma_{X_p}$ possui $1$ no seu domínio. Uma variedade comuma conexão é dita \textit{completa} se toda geodésica puder ter seu domínio extendido para todo $\mathbb{R}$. No caso de variedades riemannianas consideradas com a conexão de Levi-Civitta, temos dois resultados que nos ajudam no sentido de definir $\Exp_p$ para um conjunto satisfatório de vetores.
+O \textit{mapa exponencial} em um ponto $p \in M$ é a função dada por $\Exp_p(X_p) = \gamma_{X_p}(1)$. Esse mapa não está necessariamente definido para todo $X_p \in T_pM$, visto que nem sempre $\gamma_{X_p}$ possui $1$ no seu domínio. Uma variedade comuma conexão é dita \textit{completa} se toda geodésica puder ter seu domínio extendido para todo $\mathbb{R}$. No caso de variedades riemannianas consideradas com a conexão de Levi-Civita, temos dois resultados que nos ajudam no sentido de definir $\Exp_p$ para um conjunto satisfatório de vetores.
 
 \begin{proposition}
     Para qualquer $p \in M$, com $M$ variedade riemanniana, existem uma vizinhança $U$ de $p$ e dois números $\epsilon, \delta > 0$ tais que para todos $q \in U$ e $v \in T_qM$ com $||v|| < \delta$, existe uma única geodésica $\gamma \colon ]-\varepsilon, \varepsilon[ \to M$ com $\gamma(0) = q$ e $\gamma'(0) = v$.
@@ -286,9 +289,19 @@ O \textit{mapa exponencial} em um ponto $p \in M$ é a função dada por $\Exp_p
 
 O Corolário \ref{geodesicas_intervalo} nos diz que o mapa exponencial está sempre definido em todas as direções, porém essa existência só está garantida para velocidades pequenas. Se você for muito rápido, pode ficar cansado muito rápido e não dar tempo do seu conjunto de parâmetros englobar o $1$.
 
+\begin{proposition}
+    A derivada $D_0\Exp_p$ é a identidade em $T_pN$ para qualquer $p \in M$.
+\end{proposition}
 
+A Proposição acima garante, em particular, que sempre existe um $\varepsilon > 0$ tal que $\Exp_p$ mapeia $B(0, \varepsilon)$ difeomorficamente em $M$. Por causa disso, existe uma inversa para o mapa exponencial, que chamaremos de \textit{mapa logarítmico}.
 
 \subsection{Curvatura}
+
+O último tópico de geometria riemanniana do qual iremos tratar é a curvatura. Existem duas formas de calcular curvaturas: o operador shape, que se generaliza pelas equações de Gauss-Codazzi, e o tensor de curvatura (que já encontramos quando falamos de conexões).
+
+Um mapa suave $F \colon M \to N$ é uma \textit{imersão em $p \in M$} se $D_pF$ for injetor. Da mesma maneira, $F$ é uma \textit{submersão em $p \in M$} se $D_pF$ for sobrejetor. Uma \textit{imersão} é um mapa suave que é imersão em todos os pontos do domínio, e vale a definição análoga para submersões. Uma \textit{imersão isométrica} é uma imersão $F \colon M \to N$ entre variedades riemannianas que satisfaz \begin{equation}
+    \mathfrak{g}_p(u, v) = \mathfrak{g}_{F(p)}(D_pF(u), D_pF(v))
+\end{equation} para todo $p \in M$.
 
 \subsection{Conceitos métricos}
 
