@@ -301,7 +301,15 @@ O último tópico de geometria riemanniana do qual iremos tratar é a curvatura.
 
 Um mapa suave $F \colon M \to N$ é uma \textit{imersão em $p \in M$} se $D_pF$ for injetor. Da mesma maneira, $F$ é uma \textit{submersão em $p \in M$} se $D_pF$ for sobrejetor. Uma \textit{imersão} é um mapa suave que é imersão em todos os pontos do domínio, e vale a definição análoga para submersões. Uma \textit{imersão isométrica} é uma imersão $F \colon M \to N$ entre variedades riemannianas que satisfaz \begin{equation}
     \mathfrak{g}_p(u, v) = \mathfrak{g}_{F(p)}(D_pF(u), D_pF(v))
-\end{equation} para todo $p \in M$.
+\end{equation} para todo $p \in M$. Um \textit{mergulho} é uma imersão injetora e própria, ou seja, tal que a pré-imagem de um compacto é também compacta. Um \textit{mergulho isométrico} é um mergulho que também é uma imersão isométrica.
+
+Se $M \subset N$ é uma subvariedade mergulhada, ou seja, é uma variedade tal que a inclusão $i \colon M \to N$ é um mergulho isométrico, então para todo $p \in M$ a derivada $D_pi$ da origem a um mergulho natural de $T_pM$ em $T_{F(p)}N$. Vamos denotar por $T^\perp_pM$ o complemento ortogonal de $T_pM$ em $T_{F(p)}N$. Temos então que \begin{equation}
+    T_pN = T_pM \oplus T_p^\perp M,
+\end{equation} da onde segue que, se $X \in \mathfrak{X}(M)$ e $Y$ é um campo suave de $N$ ao longo de $M$ então $\nabla_X Y$ se decompõe em dois campos \begin{equation}\label{gauss}
+    \nabla_X Y = \top(\nabla_X Y)\phantom{.}+ \perp(\nabla_X Y)
+\end{equation} com $\top(\nabla_X Y)$ sendo tangente a $M$ e $\perp(\nabla_X Y)$ normal a $M$. O operador $\alpha(X, Y) = \perp(\nabla_X Y)$ é chamado de \textit{segunda forma fundamental} de $M$, enquanto a outra parte da soma acima coincide com a conexão de Levi-Civita em $M$. Colocando a nossa recém definida notação na equação $($\ref{gauss}$)$ temos a que é chamada de \textit{equação de Gauss} \begin{equation}
+    \nabla_X Y = \top(\nabla_X Y) + \alpha(X, Y).
+\end{equation}
 
 \subsection{Conceitos métricos}
 
