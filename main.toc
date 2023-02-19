@@ -3,11 +3,18 @@
 \contentsline {section}{\numberline {2}Geometria hiperbólica}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Variedades e métricas riemannianas}{2}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Conexões e derivada covariante}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Geodésicas e transporte paralelo}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Jacobiana e teorema da função inversa}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.3}Jacobiana e teorema da função inversa}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Geodésicas e transporte paralelo}{5}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Mapa exponencial e mapa logarítmico}{6}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Curvatura}{6}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Conceitos métricos}{7}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Modelos para a geometria hiperbólica}{7}{subsection.2.8}%
-\contentsline {section}{\numberline {3}Redes neurais}{7}{section.3}%
-\contentsline {section}{\numberline {4}Misturando tudo}{7}{section.4}%
+\contentsline {subsection}{\numberline {2.6}Curvatura por via de tensores}{6}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Conceitos métricos}{8}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Modelos para a geometria hiperbólica}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Hiperboloide de Lorentz}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Disco de Poincaré}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Semi-plano de Poincaré}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Disco de Beltrami-Klein}{9}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Modelo do Hemisfério}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Isometrias entre os modelos}{9}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Generalizando operações euclidianas}{9}{subsection.3.7}%
+\contentsline {section}{\numberline {4}Redes neurais}{9}{section.4}%
+\contentsline {section}{\numberline {5}Misturando tudo}{9}{section.5}%

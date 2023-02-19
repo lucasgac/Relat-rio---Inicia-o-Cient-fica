@@ -40,6 +40,42 @@
       \field{title}{Geometrias Clássicas}
       \field{year}{2020}
       \true{nocite}
+      \verb{urlraw}
+      \verb https://github.com/HugoCBotos/geometria-classica/blob/master/Geometrias%20Cl%C3%A1ssicas%20-%20Hugo%20C.%20Bot%C3%B3s.pdf
+      \endverb
+      \verb{url}
+      \verb https://github.com/HugoCBotos/geometria-classica/blob/master/Geometrias%20Cl%C3%A1ssicas%20-%20Hugo%20C.%20Bot%C3%B3s.pdf
+      \endverb
+    \endentry
+    \entry{angy}{unpublished}{}
+      \name{author}{1}{}{%
+        {{hash=3b60afd737a68884956c4945b65fe969}{%
+           family={Gye-Seon\bibnamedelima Lee},
+           familyi={G\bibinithyphendelim S\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Anna\bibnamedelima Wienhard},
+           giveni={A\bibinitperiod\bibinitdelim W\bibinitperiod},
+           prefix={e},
+           prefixi={e\bibinitperiod}}}%
+      }
+      \strng{namehash}{3b60afd737a68884956c4945b65fe969}
+      \strng{fullhash}{3b60afd737a68884956c4945b65fe969}
+      \strng{bibnamehash}{3b60afd737a68884956c4945b65fe969}
+      \strng{authorbibnamehash}{3b60afd737a68884956c4945b65fe969}
+      \strng{authornamehash}{3b60afd737a68884956c4945b65fe969}
+      \strng{authorfullhash}{3b60afd737a68884956c4945b65fe969}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Curvature of Riemannian Manifolds}
+      \field{year}{2015}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.mathi.uni-heidelberg.de/~lee/Soeren05.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.mathi.uni-heidelberg.de/~lee/Soeren05.pdf
+      \endverb
     \endentry
     \entry{tu1}{book}{}
       \name{author}{1}{}{%

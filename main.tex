@@ -70,6 +70,7 @@
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\Exp}{Exp}
 \DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Ricci}{Ricci}
 
 \newcommand{\Mod}[1]{$\module_{#1}$}
 \newcommand{\Chain}[1]{$\chain(#1)$}
@@ -226,6 +227,22 @@ Vamos agora generalizar o conceito da derivada de $V$ para uma variedade $M$ qua
 
 Definimos acima o que seria \textbf{uma} derivada covariante, mas acontece que, fixadas uma conexão e uma curva, sempre existe uma e apenas uma derivada covariante, portanto podemos falar \textbf{da} derivada covariante.
 
+\subsection{Jacobiana e teorema da função inversa}
+
+Se $F \colon M \to N$ é suave, então para todas as carta $(U, \phi)$ sobre $p$ e $(V, \psi)$ sobre $F(p)$ o mapa $\psi \circ F \circ \phi^{-1}$ é suave. Sabemos da teoria de variedades que as derivadas parciais $\partial/\partial \phi^i$ e $\partial/\partial \psi^j$ formam base para $T_pM$ e $T_{F(p)}N$, respectivamente. Considere agora a transformação linear $D_pF$ dada por \begin{equation}
+    D_pF(v) f = v(f \circ F)
+\end{equation} que manda vetores tangentes a $p$ para vetores tangentes a $F(p)$. Na expressão acima, estamos apenas descrevendo como o vetor $D_pF(v)$ age em uma função $f \colon N \to \mathbb{R}$ suave. O mapa $D_pF$ é chamado de \textit{derivada de $F$ em $p$}.
+
+Podemos então considerar a matriz de $D_pF$ conforme as bases $\partial/\partial \phi^i$ e $\partial/\partial \psi^j$. Se denotarmos por $F^i$ o mapa $\psi^i \circ F$, então temos que \begin{equation}
+    D_pF = \begin{bmatrix}
+        \left.\frac{\partial F^i}{\partial \phi^j}\right|_p
+    \end{bmatrix}.
+\end{equation} Note que ela coincide com a matriz jacobiana que conhecemos do cálculo. De fato, essa coincidência motiva uma nova versão do teorema da função inversa.
+
+\begin{theorem}
+    Se $F \colon M \to N$ é suave e $\dim M = \dim N$, então $F$ é um difeomorfismo local em $p \in M$ se, e somente se, $\det D_pF \neq 0$.
+\end{theorem}
+
 \subsection{Geodésicas e transporte paralelo}
 
 Se $c \colon I \to M$ é uma curva, então dizemos que $c$ é uma \textit{geodésica} se a derivada covariante $DT/dt$ do seu campo velocidade $T(t) = c'(t)$ é nula. Note que a existência de uma conexão, e portanto de uma derivada covariante, não depende da existência de uma métrica riemanniana. Porém, caso a variedade $M$ possua uma métrica, vamos sempre assumir que a conexão considerada é a conexão de Levi-Civita em $M$.
@@ -271,7 +288,11 @@ Se $c \colon I \to M$ é uma curva e $V$ é um campo ao longo de $c$, então diz
     Se $V$ e $W$ são paralelos ao longo de $c$ em uma variedade riemanniana $M$, então $||V||$ e $\mathfrak{g}(V, W)$ são constantes.
 \end{proposition}
 
-\subsection{Jacobiana e teorema da função inversa}
+Um problema importante com questão ao transporte paralelo é a existência. Ela está garantida pelo resultado abaixo.
+
+\begin{theorem}
+    Se $M$ é uma variedade suave com uma conexão $\nabla$ e $c \colon [a,b] \to M$ uma curva. Dado $v \in T_{c(a)}M$, existe um campo vetorial paralelo $V_t$ ao longo de $c$ tal que $V_a = v$.
+\end{theorem}
 
 \subsection{Mapa exponencial e mapa logarítmico}
 
@@ -295,25 +316,83 @@ O Corolário \ref{geodesicas_intervalo} nos diz que o mapa exponencial está sem
 
 A Proposição acima garante, em particular, que sempre existe um $\varepsilon > 0$ tal que $\Exp_p$ mapeia $B(0, \varepsilon)$ difeomorficamente em $M$. Por causa disso, existe uma inversa para o mapa exponencial, que chamaremos de \textit{mapa logarítmico}.
 
-\subsection{Curvatura}
+\subsection{Curvatura por via de tensores}
 
-O último tópico de geometria riemanniana do qual iremos tratar é a curvatura. Existem duas formas de calcular curvaturas: o operador shape, que se generaliza pelas equações de Gauss-Codazzi, e o tensor de curvatura (que já encontramos quando falamos de conexões).
+Fixada uma conexão $\nabla$ em $M$, já conhecemos o tensor de torção, que é dado por \begin{align}
+    T(X,Y) = \nabla_X Y - \nabla_Y X - [X,Y].
+\end{align} Ao tomarmos $X = \partial_i$ e $Y = \partial_j$ em uma carta $(U, \phi)$, temos $[X,Y] = \partial_i \partial_j - \partial_j \partial_i = 0$, portanto se a conexão $\nabla$ é a de Levi-Citiva, temos pelo anulamento da torção que $\nabla_{\partial_i} \partial_j = \nabla_{\partial_j} \partial_i$. Dessa maneira, as derivadas desses campos comutam.
 
-Um mapa suave $F \colon M \to N$ é uma \textit{imersão em $p \in M$} se $D_pF$ for injetor. Da mesma maneira, $F$ é uma \textit{submersão em $p \in M$} se $D_pF$ for sobrejetor. Uma \textit{imersão} é um mapa suave que é imersão em todos os pontos do domínio, e vale a definição análoga para submersões. Uma \textit{imersão isométrica} é uma imersão $F \colon M \to N$ entre variedades riemannianas que satisfaz \begin{equation}
-    \mathfrak{g}_p(u, v) = \mathfrak{g}_{F(p)}(D_pF(u), D_pF(v))
-\end{equation} para todo $p \in M$. Um \textit{mergulho} é uma imersão injetora e própria, ou seja, tal que a pré-imagem de um compacto é também compacta. Um \textit{mergulho isométrico} é um mergulho que também é uma imersão isométrica.
+Vamos tentar entender o que acontece para o tensor de curvatura. Comecemos lembrando que ele é dado por \begin{align}
+    R(X,Y)Z = \nabla_X\nabla_Y Z - \nabla_Y\nabla_X Z - \nabla_{[X,Y]}Z.
+\end{align} Ao tomarmos $X = \partial_i$, $Y = \partial_j$ e $Z$ qualquer, temos novamente que $[X,Y] = 0$, portanto $\nabla_{[X,Y]}Z = 0$. Dessa forma, segue que \begin{align}
+    R(\partial_i, \partial_j)Z = \nabla_{\partial_i}\nabla_{\partial_j}Z - \nabla_{\partial_j}\nabla_{\partial_i}Z.
+\end{align} Porém, mesmo que $\nabla$ seja a conexão de Levi-Civita, não temos garantia de que $R(X,Y)Z = 0$, dessa forma nem sempre derivar um campo em direções diferentes independe da ordem dessas derivadas. O que vai medir a diferença entre essas operações é a curvatura da sua variedade.
 
-Se $M \subset N$ é uma subvariedade mergulhada, ou seja, é uma variedade tal que a inclusão $i \colon M \to N$ é um mergulho isométrico, então para todo $p \in M$ a derivada $D_pi$ da origem a um mergulho natural de $T_pM$ em $T_{F(p)}N$. Vamos denotar por $T^\perp_pM$ o complemento ortogonal de $T_pM$ em $T_{F(p)}N$. Temos então que \begin{equation}
-    T_pN = T_pM \oplus T_p^\perp M,
-\end{equation} da onde segue que, se $X \in \mathfrak{X}(M)$ e $Y$ é um campo suave de $N$ ao longo de $M$ então $\nabla_X Y$ se decompõe em dois campos \begin{equation}\label{gauss}
-    \nabla_X Y = \top(\nabla_X Y)\phantom{.}+ \perp(\nabla_X Y)
-\end{equation} com $\top(\nabla_X Y)$ sendo tangente a $M$ e $\perp(\nabla_X Y)$ normal a $M$. O operador $\alpha(X, Y) = \perp(\nabla_X Y)$ é chamado de \textit{segunda forma fundamental} de $M$, enquanto a outra parte da soma acima coincide com a conexão de Levi-Civita em $M$. Colocando a nossa recém definida notação na equação $($\ref{gauss}$)$ temos a que é chamada de \textit{equação de Gauss} \begin{equation}
-    \nabla_X Y = \top(\nabla_X Y) + \alpha(X, Y).
+Para entendermos a curvatura geometricamente, precisamos falar de holonomia. Dado $p \in M$ e $\gamma \colon [a,b] \to M$ fechada em $p$ e contrátil, para cada $v \in T_pM$ podemos considerar o campo $V_t$ ao longo de $\gamma$ que seja paralelo e satisfaça $V_a = v$. O vetor $v' = V_b$, que é o transporte paralelo de $v$ ao longo de $\gamma$, é chamado de \textit{holonomia de $v$ ao longo de $\gamma$}.
+
+A menos que sua variedade possua curvatura $0$, isso é, se $R(X,Y)Z = 0$ para todos $X, Y, Z$, a sempre existirá $v \in T_pM$ tal que $v' \neq v$. Ou seja, o ângulo entre esses dois vetores é também medido pela curvatura.
+
+Agora vamos entender quem são as possíveis curvaturas de uma variedade riemanniana. Por enquanto, vamos dar enfoque em três principais tipos: a seccional (ou gaussiana), a de Ricci e a escalar.
+
+A primeira coisa a notar é que, dados $x, y, z \in T_pM$, podemos construir campos suaves $X, Y, Z$ ao redor de $p$ de maneira que $X_p = x$, $Y_p = y$ e $Z_p = z$. Definimos então $R(x,y)z$ como sendo o campo $R(X, Y)Z$ no ponto $p$.
+
+\begin{theorem}
+    Seja $p \in M$ com $\dim M \geq 2$ e $W \leq T_pM$ um subespaço de dimensão $2$ (também conhecido como plano). Considere $x, y$ uma base para $W$ e defina o número \begin{equation}
+        K(W) = \frac{\mathfrak{g}_p(R(x,y)x, y)}{|x \wedge y|^2},
+    \end{equation} onde $|x \wedge y|$ é a área do paralelogramo formado por $x$ e $y$, que pode ser explicitamente calculada por \begin{equation}
+        |x \wedge y| = \sqrt{||x||^2||y||^2 - \mathfrak{g}_p(x,y)},
+    \end{equation} onde $||\cdot||$ é a norma induzida pela métrica $\mathfrak{g}$. Temos então que $K(W)$ não depende da base escolhida para $W$.
+\end{theorem}
+
+A quantidade $K(W)$ definida no teorema acima é a \textit{curvatura seccional} ou \textit{curvatura gaussiana} de $W$ em $p$. Agora podemos usar essa curvatura para falarmos de curvatura de Ricci. Dado $p \in M$ e $v \in T_pM$ unitário, considere $w \in v^\perp$. Se $P_w = \mathbb{R}v + \mathbb{R}w$, então temos a curvatura seccional $K(P_w)$. A \textit{curavura de Ricci em $p$ na direção $v$} é a média de todas essas curvaturas seccionais, ou seja, \begin{equation}
+    \Ricci_p(v) = \lambda\int_S K(P_w)dV,
+\end{equation} onde $S$ é a esfera unitária em $T_pM$, $dV$ é a forma de volume em $S$ e $\lambda$ é uma constante positiva que é, honestamente, irrelevante. De fato, ela pode ser calculada explicitamente se utilizarmos a seguinte proposição.
+
+\begin{proposition}
+    Se $w_1, \dots, w_{n-1}$ é uma base ortonormal de $v^\perp$, então \begin{equation}
+        \Ricci_p(v) = \frac{1}{n-1}\sum_{i = 1}^{n - 1} \mathfrak{g}_p(R(x, z_i)x, z_i).
+    \end{equation}
+\end{proposition}
+
+Probabilisticamente, podemos pensar que curvatura de Ricci é a curvatura seccional média de planos aleatórios da forma $P_w$. Isso nos dá alguma ideia do porquê não conseguimos recuperar as curvaturas seccionais a partir da curvatura de Ricci: há perda de informação, pois a partir da média de um conjunto de dados raramente conseguimos recuperar quem são esses dados.
+
+Por fim, a \textit{curvatura escalar} nada mais é do que uma média das curvaturas de Ricci, ou seja, se $p \in M$, podemos considerar uma base ortonormal $z_1, \dots, z_n$ de $T_pM$. A curvatura escalar é o número definido por \begin{equation}
+    K_s(p) = \frac{1}{n}\sum_{i = 1}^n \Ricci_p(z_i).
 \end{equation}
 
+Por mais que a curvatura escalar não dependa de uma direção, e apenas do ponto, não é a ela que nos referimos ao dizer que $M$ tem curvatura constante $\kappa$ em $p \in M$. Essa expressão diz que todas as curvaturas seccionais em $p$ valem $\kappa$.
+    
 \subsection{Conceitos métricos}
 
-\subsection{Modelos para a geometria hiperbólica}
+Antes de brincarmos com a geometria hiperbólica, vamos falar de duas definições que aparecem na teoria de espaços métricos e que podem ser úteis mais para frente. Dado um espaço métrico $(X, d)$, o \textit{produto de Gromov} é uma operação que, dados três pontos $x, y, z \in X$, retorna o número \begin{equation}
+    (y, z)_x = \frac{1}{2}(d(x,y) + d(x,z) - d(y,z)).
+\end{equation} Dizemos que $X$ é \textit{$\delta$-hiperbólico}, com $\delta > 0$, se para todos $x, y, z, w \in X$ temos \begin{equation}
+    (x,z)_w \geq \min\{(x,y)_w, (y,z)_w\} - \delta.
+\end{equation}
+
+Uma definição equivalente envolve triângulos geodésicos. Uma \textit{geodésica} em $(X, d)$ é a imagem isométrica de um intervalo $[a,b]$. Se $\gamma$ é essa isometria, $x = \gamma(a)$ e $y = \gamma(b)$, denotamos a imagem de $\gamma$ por $[x, y]$. Um \textit{triângulo geodésico com vértices $x, y, z \in X$} é a união das geodésicas $[x,y]$, $[y, z]$ e $[z, x]$. Se para cada $m \in [x,y]$ existe um ponto em $n \in [y,z] \cup [z,w]$ tal que $d(m,n) < \delta$, dizemos que o triângulo geodésico $\Delta(x,y,z)$ é \textit{$\delta$-fino}. Dizemos que $(X, d)$ é \textit{$\delta$-hiperbólico} se todo triângulo geodésico é $\delta$-fino.
+
+Por fim, precisamos falar de distorção, que é uma medida de fidelidade para certos mergulhos de dados em aprendizado de máquina. Se $X$ e $Y$ são espaços métricos e $f \colon X \to Y$ é um mergulho de dados em $X$ para pontos de $Y$, a \textit{distorção de $f$ em $x, y \in X$} é dada por \begin{equation}
+    \mathbb{D}_f(a,b) = \frac{|d(a,b) - d(f(a), f(b))|}{d(a,b)}.
+\end{equation}
+
+\section{Modelos para a geometria hiperbólica}
+
+O espaço hiperbólico real é uma variedade riemanniana de curvatura constante igual a $-1$. Existem diversos modelos isométricos para ele, e agora vamos falar de alguns.
+
+\subsection{Hiperboloide de Lorentz}
+
+\subsection{Disco de Poincaré}
+
+\subsection{Semi-plano de Poincaré}
+
+\subsection{Disco de Beltrami-Klein}
+
+\subsection{Modelo do Hemisfério}
+
+\subsection{Isometrias entre os modelos}
+
+\subsection{Generalizando operações euclidianas}
 
 \section{Redes neurais}
 
