@@ -130,6 +130,46 @@
       \field{year}{2015}
       \true{nocite}
     \endentry
+    \entry{hyp}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=f1544697281e1e9f9bd3e5733ad5fe61}{%
+           family={William\bibnamedelimb J.\bibnamedelimi Floyd\bibnamedelimb e\bibnamedelimb Richard\bibnamedelimb Kenyon\bibnamedelimb e\bibnamedelimb Walter\bibnamedelimb R.\bibnamedelimi Parry},
+           familyi={W\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim e\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim e\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={James\bibnamedelimb W.\bibnamedelimi Cannon},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim C\bibinitperiod},
+           prefix={e},
+           prefixi={e\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=9d73cd83237635cfedf493140f409347}{%
+           family={Levy},
+           familyi={L\bibinitperiod},
+           given={Silvio},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MSRI Publications}%
+      }
+      \strng{namehash}{f1544697281e1e9f9bd3e5733ad5fe61}
+      \strng{fullhash}{f1544697281e1e9f9bd3e5733ad5fe61}
+      \strng{bibnamehash}{f1544697281e1e9f9bd3e5733ad5fe61}
+      \strng{authorbibnamehash}{f1544697281e1e9f9bd3e5733ad5fe61}
+      \strng{authornamehash}{f1544697281e1e9f9bd3e5733ad5fe61}
+      \strng{authorfullhash}{f1544697281e1e9f9bd3e5733ad5fe61}
+      \strng{editorbibnamehash}{9d73cd83237635cfedf493140f409347}
+      \strng{editornamehash}{9d73cd83237635cfedf493140f409347}
+      \strng{editorfullhash}{9d73cd83237635cfedf493140f409347}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{2}
+      \field{title}{Flavours of Geometry}
+      \field{year}{1997}
+      \true{nocite}
+      \field{pages}{59 até 115}
+      \range{pages}{-1}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

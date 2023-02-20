@@ -71,6 +71,7 @@
 \DeclareMathOperator{\Exp}{Exp}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\Ricci}{Ricci}
+\DeclareMathOperator{\arccosh}{arccosh}
 
 \newcommand{\Mod}[1]{$\module_{#1}$}
 \newcommand{\Chain}[1]{$\chain(#1)$}
@@ -298,7 +299,7 @@ Um problema importante com questão ao transporte paralelo é a existência. Ela
 
 Uma geodésica $c \colon I \to M$ é \textit{maximal} se não podemos estender $c$ para um intervalo maior do que $I$ sem que a curva deixe de ser uma geodésica. Do Teorema \ref{geodesicas_existencia} temos que, dado $p \in M$ e $X_p \in T_pM$ existe uma única geodésica maximal $c$ com $c(0) = p$ e $c'(0) = X_p$. Vamos denotar essa geodésica por $\gamma_{X_p}$.
 
-O \textit{mapa exponencial} em um ponto $p \in M$ é a função dada por $\Exp_p(X_p) = \gamma_{X_p}(1)$. Esse mapa não está necessariamente definido para todo $X_p \in T_pM$, visto que nem sempre $\gamma_{X_p}$ possui $1$ no seu domínio. Uma variedade comuma conexão é dita \textit{completa} se toda geodésica puder ter seu domínio extendido para todo $\mathbb{R}$. No caso de variedades riemannianas consideradas com a conexão de Levi-Civita, temos dois resultados que nos ajudam no sentido de definir $\Exp_p$ para um conjunto satisfatório de vetores.
+O \textit{mapa exponencial} em um ponto $p \in M$ é a função dada por $\Exp_p(X_p) = \gamma_{X_p}(1)$. Esse mapa não está necessariamente definido para todo $X_p \in T_pM$, visto que nem sempre $\gamma_{X_p}$ possui $1$ no seu domínio. Uma variedade com uma conexão é dita \textit{completa} se toda geodésica puder ter seu domínio estendido para todo $\mathbb{R}$. No caso de variedades riemannianas consideradas com a conexão de Levi-Civita, temos dois resultados que nos ajudam no sentido de definir $\Exp_p$ para um conjunto satisfatório de vetores.
 
 \begin{proposition}
     Para qualquer $p \in M$, com $M$ variedade riemanniana, existem uma vizinhança $U$ de $p$ e dois números $\epsilon, \delta > 0$ tais que para todos $q \in U$ e $v \in T_qM$ com $||v|| < \delta$, existe uma única geodésica $\gamma \colon ]-\varepsilon, \varepsilon[ \to M$ com $\gamma(0) = q$ e $\gamma'(0) = v$.
@@ -344,7 +345,7 @@ A primeira coisa a notar é que, dados $x, y, z \in T_pM$, podemos construir cam
     \end{equation} onde $||\cdot||$ é a norma induzida pela métrica $\mathfrak{g}$. Temos então que $K(W)$ não depende da base escolhida para $W$.
 \end{theorem}
 
-A quantidade $K(W)$ definida no teorema acima é a \textit{curvatura seccional} ou \textit{curvatura gaussiana} de $W$ em $p$. Agora podemos usar essa curvatura para falarmos de curvatura de Ricci. Dado $p \in M$ e $v \in T_pM$ unitário, considere $w \in v^\perp$. Se $P_w = \mathbb{R}v + \mathbb{R}w$, então temos a curvatura seccional $K(P_w)$. A \textit{curavura de Ricci em $p$ na direção $v$} é a média de todas essas curvaturas seccionais, ou seja, \begin{equation}
+A quantidade $K(W)$ definida no teorema acima é a \textit{curvatura seccional} ou \textit{curvatura gaussiana} de $W$ em $p$. Agora podemos usar essa curvatura para falarmos de curvatura de Ricci. Dado $p \in M$ e $v \in T_pM$ unitário, considere $w \in v^\perp$. Se $P_w = \mathbb{R}v + \mathbb{R}w$, então temos a curvatura seccional $K(P_w)$. A \textit{curvatura de Ricci em $p$ na direção $v$} é a média de todas essas curvaturas seccionais, ou seja, \begin{equation}
     \Ricci_p(v) = \lambda\int_S K(P_w)dV,
 \end{equation} onde $S$ é a esfera unitária em $T_pM$, $dV$ é a forma de volume em $S$ e $\lambda$ é uma constante positiva que é, honestamente, irrelevante. De fato, ela pode ser calculada explicitamente se utilizarmos a seguinte proposição.
 
@@ -378,21 +379,77 @@ Por fim, precisamos falar de distorção, que é uma medida de fidelidade para c
 
 \section{Modelos para a geometria hiperbólica}
 
-O espaço hiperbólico real é uma variedade riemanniana de curvatura constante igual a $-1$. Existem diversos modelos isométricos para ele, e agora vamos falar de alguns.
+O espaço hiperbólico real é uma variedade riemanniana de curvatura constante igual a $-1$. Existem diversos modelos isométricos para ele, e agora vamos falar de alguns. Aqui, é importante notar que todos esses modelos estão mergulhados 
 
-\subsection{Hiperboloide de Lorentz}
+\subsection{O semi-espaço de Poincaré}
 
-\subsection{Disco de Poincaré}
+O primeiro modelo do qual vamos falar é o semi-espaço de Poincaré. Ele é dado, como variedade suave, pelo semi-espaço \begin{align}
+    \mathbb{H}^n = \{x \in \mathbb{R}^n \mid x_n > 0\}.
+\end{align} Sua métrica, por sua vez, é dada pela expressão \begin{align}
+    ds^2 = \frac{dx_1^2 + \cdots + dx_n^2}{x_n^2}.
+\end{align} Essa expressão significa que, para cada $p \in \mathbb{H}^n$, temos \begin{align}
+    \mathfrak{g}_p(u, v) = \frac{u_1v_1 + \cdots u_nv_n}{p_n^2}.
+\end{align} As formas diferenciais $dx_i$ recebem os vetores $u, v$ e retornam as respectivas coordenadas. Por sua vez, sempre que $x_i$ aparecer em uma fórmula, ele será substituído pela $i$-ésima coordenada do ponto onde a métrica está sendo construída.
 
-\subsection{Semi-plano de Poincaré}
+Esse espaço, assim como toda variedade riemanniana, possui uma estrutura de espaço métrico induzida pela métrica riemanniana. Essa métrica, em $\mathbb{H}^n$, é dada por \begin{align}
+    d(x,y) = \arccosh\left(1 + \frac{||x - y||^2}{2x_ny_n}\right).
+\end{align}
 
-\subsection{Disco de Beltrami-Klein}
+\subsection{O hiperboloide de Lorentz}
 
-\subsection{Modelo do Hemisfério}
+O modelo do hiperboloide depende do que chamamos de \textit{métrica de Lorentz} em $\mathbb{R}^{n+1}$. Ela é definida por \begin{align}
+    \langle x, y \rangle_\mathbb{L} = -x_0y_0 + x_1y_1 + \cdots + x_ny_n.
+\end{align} Como variedade suave, o hiperboloide é definido por \begin{align}
+    \mathbb{L}^n = \{x \in \mathbb{R}^{n+1} \mid \langle x, x \rangle_\mathbb{L} = -1, x_0 > 0\}.
+\end{align}
+
+A métrica riemanniana em $\mathbb{L}^n$ é induzida também da métrica de Lorentz, e é dada por \begin{align}
+    ds^2 = -dx_0^2 + dx_1^2 + \cdots + dx_n^2.
+\end{align} Note que essa métrica não faz muito sentido, visto que o espaço tangente de $\mathbb{L}^n$ deveria ter dimensão $n$, mas aqui utilizamos $n+1$ coordenadas. De fato, essa métrica se aplica apenas ao considerarmos o espaço tangente $T_p\mathbb{H}^n$ como o conjunto $p^\perp = \{x \in \mathbb{R}^n \mid \langle x, p \rangle_\mathbb{L} = 0\}$. A distância no hiperboloide, por sua vez, é dada por \begin{align}
+    d(x,y) = \arccosh(-\langle x, y \rangle_\mathbb{L}).
+\end{align}
+
+É importante notarmos aqui que a métrica riemanniana que definimos não parece ser um produto interno, justamente pelo fator negativo $-dx_0^2$. De fato, a métrica de Lorentz não é um produto interno em $\mathbb{R}^n$, mas ao restringirmos ela ao espaço $p^\perp$ para qualquer $p \in \mathbb{L}^n$, essa restrição é sempre um produto interno.
+
+\subsection{O \texorpdfstring{$n$}{n}-disco de Poincaré}
+
+O $n$-disco de Poincaré é, como variedade suave, dado por \begin{align}
+    \mathbb{B}^n = \{x \in \mathbb{R}^n \mid ||x|| < 1\}.
+\end{align} Sua métrica é definida como \begin{align}
+    ds^2 = 4\frac{dx_1^2 + \cdots + dx_n^2}{(1 - x_1^2 + \cdots + x_n^2)^2}
+\end{align} e sua distância por \begin{align}
+    d(x,y) = \arccosh\left(1 + 2\frac{||x - y||^2}{(1 - ||x||^2)(1 - ||y||^2)}\right).
+\end{align}
+
+\subsection{O \texorpdfstring{$n$}{n}-disco de Beltrami-Klein}
+
+O $n$-disco de Beltrami-Klein é, como variedade suave, dado por \begin{align}
+    \mathbb{K}^n = \{x \in \mathbb{R}^n \mid ||x|| < 1\}.
+\end{align} É a mesma variedade suave que da origem ao disco de Poincaré, mas a denotamos por uma letra diferente apenas para diferenciar os dois modelos. A diferença é na métrica riemanniana, que em $\mathbb{K}^n$ é dada por \begin{align}
+    ds^2 = \frac{dx_1^2 + \cdots dx_n^2}{1 - x_1^2 - \cdots - x_n^2} + \frac{(x_1dx_1 + \cdots + x_ndx_n)^2}{(1 - x_1^2 - \cdots - x_n^2)^2}.
+\end{align} Como consequência, a distância nesse espaço é diferente da distância no disco de Poincaré, e nesse caso é dada por \begin{align}
+    d(x,y) = \frac{1}{2}\ln\left(\frac{||a - x|| \cdot ||b - y||}{||a - y|| \cdot ||b - x||}\right).
+\end{align} Aqui, $a$ e $b$ são pontos construídos a partir de $x$ e $y$ pelo seguinte método: considere a reta $r$ que passa por $x$ e $y$ e defina por $a$ e $b$ os pontos em que $r$ intersecta $\mathbb{S}^{n-1}$. O ponto $a$ será escolhido como o que estiver mais próximo a $x$, e o ponto $b$ por consequência será escolhido como o que estiver mais próximo a $y$.
+
+\subsection{O modelo do hemisfério}
+
+O último modelo que iremos visitar é o do hemisfério. Como variedade suave, ele é dado por \begin{align}
+    \mathbb{J}^n = \{x \in \mathbb{S}^n \mid x_{n+1} > 0\},
+\end{align} e possui métrica dada por \begin{align}
+    ds^2 = \frac{dx_1^2 + \cdots + dx_{n+1}^2}{x_{n+1}^2}.
+\end{align} A distância em $\mathbb{J}^n$, por sua vez, é dada por \begin{align}
+    d(x,y) = \arccosh\left(\langle \phi(x), \phi(y) \rangle_\mathbb{L}\right),
+\end{align} onde $\phi$ é o mapa dado por \begin{align}
+    (x_1, \dots, x_{n+1}) \mapsto \left(\frac{x_1}{x_{n+1}}, \dots, \frac{x_n}{x_{n+1}}, \frac{1}{x_{n+1}}\right).
+\end{align}
 
 \subsection{Isometrias entre os modelos}
 
+Devemos agora explicitar isometrias entre os modelos definidos acima.
+
 \subsection{Generalizando operações euclidianas}
+
+
 
 \section{Redes neurais}
 
