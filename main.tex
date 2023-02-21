@@ -72,6 +72,7 @@
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\Ricci}{Ricci}
 \DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\gyr}{gyr}
 
 \newcommand{\Mod}[1]{$\module_{#1}$}
 \newcommand{\Chain}[1]{$\chain(#1)$}
@@ -445,11 +446,45 @@ O último modelo que iremos visitar é o do hemisfério. Como variedade suave, e
 
 \subsection{Isometrias entre os modelos}
 
-Devemos agora explicitar isometrias entre os modelos definidos acima.
+Devemos agora explicitar isometrias entre os modelos definidos acima. Para isso, definiremos apenas quatro desses mapas e, como composição de isometrias é uma isometria, definir apenas essas quatro funções nos dará isometrias entre quaisquer dois modelos por meio de tomar inversas e compor.
+
+\begin{itemize}
+    \item O isomorfismo entre $\mathbb{L}^n$ e $\mathbb{B}^n$ é dado por \begin{align}
+        (x_1, \dots, x_{n+1}) \in \mathbb{L}^n \mapsto \left(\frac{x_2}{1 + x_1}, \dots, \frac{x_{n+1}}{1 + x_1}\right) \in \mathbb{B}^n;
+    \end{align}
+
+    \item O isomorfismo entre $\mathbb{B}^n$ e $\mathbb{H}^n$ é dado por \begin{align}
+        (x_1, \dots, x_n) \in \mathbb{B}^n \mapsto \frac{1}{1 + 2x_1 + ||x||^2}(1 - ||x||^2, 2x_2, \dots, 2x_n) \in \mathbb{H}^n;
+    \end{align}
+
+    \item O isomorfismo entre $\mathbb{L}^n$ e $\mathbb{K}^n$ é dado por \begin{align}
+        (x_1, \dots, x_{n+1}) \in \mathbb{L}^n \mapsto \left(\frac{x_2}{x_1}, \dots, \frac{x_{n+1}}{x_1}\right) \in \mathbb{K}^n;
+    \end{align}
+
+    \item O isomorfismo entre $\mathbb{L}^n$ e $\mathbb{J}^n$ é dado por \begin{align}
+        (x_1, \dots, x_{n+1}) \in \mathbb{L}^n \mapsto \left(\frac{x_1}{x_{n+1}}, \dots, \frac{x_n}{x_{n+1}}, \frac{1}{x_{n+1}}\right) \in \mathbb{J}^n.
+    \end{align}
+\end{itemize}
 
 \subsection{Generalizando operações euclidianas}
 
+O próximo passo agora é generalizar algumas operações de espaços euclidianos para os espaços hiperbólicos. Faremos isso pois, para construir redes neurais em espaços euclidianos, precisamos de álgebra linear, e portanto é uma boa ideia aprender como fazer álgebra linear em um espaço que não é vetorial. Um \textit{girogrupo} é um conjunto $G$ munido de uma operação binária $\oplus$ satisfazendo as seguintes propriedades: \begin{itemize}
+    \item existe ao menos um elemento $0 \in G$ tal que $0 \oplus a = a$ para todo $a \in G$. Todo elemento satisfazendo essa condição é chamado de \textit{identidade à esquerda}.
+    \item existe alguma identidade à esquerda $0 \in G$ de maneira que, para todo $a \in G$, existe $\ominus a \in G$ de maneira que $\ominus a \oplus a = 0$;
+    \item para todos $a, b, c \in G$, existe um elemento $\gyr[a,b]c \in G$ tal que vale a igualdade $a \oplus (b \oplus c) = (a \oplus b) \oplus \gyr[a,b]c$;
+    \item O mapa $\gyr[a,b] \colon c \mapsto \gyr[a,b]c$ é um automorfismo de $G$, isso é, é uma bijeção que satisfaz $\gyr[a,b](c \oplus d) = \gyr[a,b]c \oplus \gyr[a,b]d$;
+    \item vale a \textit{propriedade de redução à direita}, isso é, $\gyr[a,b] = \gyr[a \oplus b, b]$ para todos $a, b \in G$.
+\end{itemize} Um girogrupo $G$ é \textit{girocomutativo} se para todos $a, b \in G$ vale $a \oplus b = \gyr[a,b](b \oplus a)$.
 
+O principal exemplo de girogrupo para o estudo de aprendizado profundo é o \textit{girogrupo de Möbius}. Considere o $n$-disco de Poincaré $\mathbb{B}^n$ e defina nele a \textit{soma de Möbius} dada por \begin{equation}
+    x \oplus y = \frac{(1 + 2\langle x, y \rangle + ||y||^2)x + (1 - ||x||^2)y}{1 + 2\langle x, y \rangle + ||x||^2 ||y||^2}.
+\end{equation} O par $(\mathbb{B}^n, \oplus)$ é um girogrupo girocomutativo, que é chamado de girogrupo de Möbius de raio $1$. Em um contexto mais geral, poderíamos tomar o interior de qualquer esfera centrada em $0$ em qualquer espaço vetorial real com produto interno, mas para nossos estudos isso não será necessário.
+
+Um \textit{espaço de girovetores real com produto interno} (iremos nos referir a esses objetos apenas como espaços de girovetores) é um girogrupo girocomutativo $(G, \oplus)$ tal que $G$ está contido em um espaço vetorial real $V$ com produto interno $\langle -, - \rangle$ e munido de uma nova operação $\otimes \colon \mathbb{R} \times G \to G$. Mais do que isso, pedimos que $(G, \oplus, \otimes)$ satisfaça as seguintes propriedades:
+\begin{itemize}
+    \item $\langle \gyr[u,v]a, \gyr[u,v]b \rangle = \langle a, b \rangle$ para todos $a, b, u, v \in G$;
+    \item 
+\end{itemize} 
 
 \section{Redes neurais}
 

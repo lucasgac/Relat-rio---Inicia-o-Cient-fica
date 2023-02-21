@@ -16,5 +16,5 @@
 \contentsline {subsection}{\numberline {3.5}O modelo do hemisfério}{10}{subsection.3.5}%
 \contentsline {subsection}{\numberline {3.6}Isometrias entre os modelos}{10}{subsection.3.6}%
 \contentsline {subsection}{\numberline {3.7}Generalizando operações euclidianas}{10}{subsection.3.7}%
-\contentsline {section}{\numberline {4}Redes neurais}{10}{section.4}%
-\contentsline {section}{\numberline {5}Misturando tudo}{10}{section.5}%
+\contentsline {section}{\numberline {4}Redes neurais}{11}{section.4}%
+\contentsline {section}{\numberline {5}Misturando tudo}{11}{section.5}%

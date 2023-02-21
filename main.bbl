@@ -47,6 +47,33 @@
       \verb https://github.com/HugoCBotos/geometria-classica/blob/master/Geometrias%20Cl%C3%A1ssicas%20-%20Hugo%20C.%20Bot%C3%B3s.pdf
       \endverb
     \endentry
+    \entry{mfgr}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4a72ad8999b2248898cc1e37a98ae65c}{%
+           family={G.\bibnamedelimi Ren},
+           familyi={G\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={M.\bibnamedelimi Ferreira},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod},
+           prefix={e},
+           prefixi={e\bibinitperiod}}}%
+      }
+      \strng{namehash}{4a72ad8999b2248898cc1e37a98ae65c}
+      \strng{fullhash}{4a72ad8999b2248898cc1e37a98ae65c}
+      \strng{bibnamehash}{4a72ad8999b2248898cc1e37a98ae65c}
+      \strng{authorbibnamehash}{4a72ad8999b2248898cc1e37a98ae65c}
+      \strng{authornamehash}{4a72ad8999b2248898cc1e37a98ae65c}
+      \strng{authorfullhash}{4a72ad8999b2248898cc1e37a98ae65c}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Algebra}
+      \field{number}{1}
+      \field{title}{Möbius gyrogroups: A Clifford algebra approach}
+      \field{volume}{328}
+      \field{year}{2011}
+      \true{nocite}
+    \endentry
     \entry{angy}{unpublished}{}
       \name{author}{1}{}{%
         {{hash=3b60afd737a68884956c4945b65fe969}{%
@@ -129,6 +156,44 @@
       \field{volume}{14}
       \field{year}{2015}
       \true{nocite}
+    \endentry
+    \entry{bpr}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=50683e2083cc9808d187fc3fb8c17ec4}{%
+           family={Ungar},
+           familyi={U\bibinitperiod},
+           given={Abraham},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=ec86bb5b48a4fce5c8239d176e5c1bd8}{%
+           family={Rassias},
+           familyi={R\bibinitperiod},
+           given={Themistocles\bibnamedelima M.},
+           giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{50683e2083cc9808d187fc3fb8c17ec4}
+      \strng{fullhash}{50683e2083cc9808d187fc3fb8c17ec4}
+      \strng{bibnamehash}{50683e2083cc9808d187fc3fb8c17ec4}
+      \strng{authorbibnamehash}{50683e2083cc9808d187fc3fb8c17ec4}
+      \strng{authornamehash}{50683e2083cc9808d187fc3fb8c17ec4}
+      \strng{authorfullhash}{50683e2083cc9808d187fc3fb8c17ec4}
+      \strng{editorbibnamehash}{ec86bb5b48a4fce5c8239d176e5c1bd8}
+      \strng{editornamehash}{ec86bb5b48a4fce5c8239d176e5c1bd8}
+      \strng{editorfullhash}{ec86bb5b48a4fce5c8239d176e5c1bd8}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{2 e 3}
+      \field{title}{Beyond Pseudo-rotations in Pseudo-Euclidean Spaces - An Introduction to the Theory of Bi-gyrogroups and Bi-gyrovector Spaces}
+      \field{year}{2018}
+      \true{nocite}
+      \field{pages}{9 até 97}
+      \range{pages}{-1}
     \endentry
     \entry{hyp}{inbook}{}
       \name{author}{1}{}{%

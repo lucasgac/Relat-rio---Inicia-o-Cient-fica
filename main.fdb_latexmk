@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber main"] 1676860626 "main.bcf" "main.bbl" "main" 1676864009
-  "bib.bib" 1676830833 1379 478204922999691aa720155adcb18018 ""
-  "main.bcf" 1676864009 107035 5069e6d4febe1c7538115afd0250f7d2 "pdflatex"
+["biber main"] 1676990846 "main.bcf" "main.bbl" "main" 1676999610
+  "bib.bib" 1676927397 2014 64094f7deac623d230f9b316aa427ef9 ""
+  "main.bcf" 1676999610 107035 5069e6d4febe1c7538115afd0250f7d2 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1676864006 "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" "main.pdf" "main" 1676864009
+["pdflatex"] 1676999607 "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" "main.pdf" "main" 1676999610
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1676560275 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1675662346 25420 c9d0b9576c7e51dd6a11dfa5428328b8 ""
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1675662349 31952 b6a65a8cf2226fd5bfc8f20bed9d1044 ""
@@ -246,13 +246,13 @@
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/tools/xspace.sty" 1636710260 4545 d84d0b20a11b9c36c6ecf45697be591c ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1636284872 56029 3f7889dab51d620aa43177c391b7b190 ""
-  "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" 1676864005 35841 fb53a225310ee2670f9a04163c2d1a02 ""
-  "main.aux" 1676864009 3762 83e0edc714174dadfcc7ce87af2733cc "pdflatex"
-  "main.bbl" 1676860629 7979 764e55dd934741d6a7f2a22344f8cee9 "biber main"
-  "main.out" 1676864009 3684 6c3823ae3970d67253bc6a963a9937f8 "pdflatex"
-  "main.run.xml" 1676864009 2301 7b8f8c29d436b67db3cb3c010012f29b "pdflatex"
-  "main.tex" 1676864005 35841 fb53a225310ee2670f9a04163c2d1a02 ""
-  "main.toc" 1676864009 1755 6fcfef16289b362098b24e1d59ea1c71 "pdflatex"
+  "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" 1676999606 39809 15bba251a9cfa6a36c63734cc118f4b7 ""
+  "main.aux" 1676999610 3887 63ba32a4c4ade3753b371ecbe57983c6 "pdflatex"
+  "main.bbl" 1676990853 10777 bed324e4f8f91989afa07f6c8c660393 "biber main"
+  "main.out" 1676999610 3684 6c3823ae3970d67253bc6a963a9937f8 "pdflatex"
+  "main.run.xml" 1676999610 2301 7b8f8c29d436b67db3cb3c010012f29b "pdflatex"
+  "main.tex" 1676999606 39809 15bba251a9cfa6a36c63734cc118f4b7 ""
+  "main.toc" 1676999610 1755 db704b00390ec5797d8eb1e40015f971 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
