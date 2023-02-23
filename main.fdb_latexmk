@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber main"] 1677111002 "main.bcf" "main.bbl" "main" 1677114242
+["biber main"] 1677111002 "main.bcf" "main.bbl" "main" 1677115549
   "bib.bib" 1676927397 2014 64094f7deac623d230f9b316aa427ef9 ""
-  "main.bcf" 1677114242 107035 5069e6d4febe1c7538115afd0250f7d2 "pdflatex"
+  "main.bcf" 1677115548 107035 5069e6d4febe1c7538115afd0250f7d2 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1677114239 "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" "main.pdf" "main" 1677114242
+["pdflatex"] 1677115545 "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" "main.pdf" "main" 1677115549
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1676560275 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1675662346 25420 c9d0b9576c7e51dd6a11dfa5428328b8 ""
   "C:/Users/lucas/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1675662349 31952 b6a65a8cf2226fd5bfc8f20bed9d1044 ""
@@ -246,13 +246,13 @@
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/tools/xspace.sty" 1636710260 4545 d84d0b20a11b9c36c6ecf45697be591c ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/lucas/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1636284872 56029 3f7889dab51d620aa43177c391b7b190 ""
-  "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" 1677114238 42312 7802e215a7e591716db0d995e6491caa ""
-  "main.aux" 1677114242 3887 e319eb0c4b0f1619cee80a421e71c530 "pdflatex"
+  "c:/Users/lucas/OneDrive/Área de Trabalho/Relatorio---Inicia--o-Cient-fica/main.tex" 1677115538 42311 8dd7aa8a94367d1677aa84455b5251ae ""
+  "main.aux" 1677115548 3886 907098d2d33423c3efc4b694275bd30f "pdflatex"
   "main.bbl" 1677111005 10777 bed324e4f8f91989afa07f6c8c660393 "biber main"
-  "main.out" 1677114242 3684 6c3823ae3970d67253bc6a963a9937f8 "pdflatex"
-  "main.run.xml" 1677114242 2301 7b8f8c29d436b67db3cb3c010012f29b "pdflatex"
-  "main.tex" 1677114238 42312 7802e215a7e591716db0d995e6491caa ""
-  "main.toc" 1677114242 1755 aa0fbbe3d163db072bfd9fb3167953ed "pdflatex"
+  "main.out" 1677115548 3681 cfbbceaf012fc55ea04d89fac2ae6bfe "pdflatex"
+  "main.run.xml" 1677115548 2301 7b8f8c29d436b67db3cb3c010012f29b "pdflatex"
+  "main.tex" 1677115538 42311 8dd7aa8a94367d1677aa84455b5251ae ""
+  "main.toc" 1677115548 1754 ebca114aa095f8108d92d434ffb1e1a9 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
