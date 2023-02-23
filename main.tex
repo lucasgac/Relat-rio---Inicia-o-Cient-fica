@@ -73,6 +73,8 @@
 \DeclareMathOperator{\Ricci}{Ricci}
 \DeclareMathOperator{\arccosh}{arccosh}
 \DeclareMathOperator{\gyr}{gyr}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\Log}{Log}
 
 \newcommand{\Mod}[1]{$\module_{#1}$}
 \newcommand{\Chain}[1]{$\chain(#1)$}
@@ -480,11 +482,39 @@ O principal exemplo de girogrupo para o estudo de aprendizado profundo é o \tex
     x \oplus y = \frac{(1 + 2\langle x, y \rangle + ||y||^2)x + (1 - ||x||^2)y}{1 + 2\langle x, y \rangle + ||x||^2 ||y||^2}.
 \end{equation} O par $(\mathbb{B}^n, \oplus)$ é um girogrupo girocomutativo, que é chamado de girogrupo de Möbius de raio $1$. Em um contexto mais geral, poderíamos tomar o interior de qualquer esfera centrada em $0$ em qualquer espaço vetorial real com produto interno, mas para nossos estudos isso não será necessário.
 
-Um \textit{espaço de girovetores real com produto interno} (iremos nos referir a esses objetos apenas como espaços de girovetores) é um girogrupo girocomutativo $(G, \oplus)$ tal que $G$ está contido em um espaço vetorial real $V$ com produto interno $\langle -, - \rangle$ e munido de uma nova operação $\otimes \colon \mathbb{R} \times G \to G$. Mais do que isso, pedimos que $(G, \oplus, \otimes)$ satisfaça as seguintes propriedades:
-\begin{itemize}
-    \item $\langle \gyr[u,v]a, \gyr[u,v]b \rangle = \langle a, b \rangle$ para todos $a, b, u, v \in G$;
-    \item 
-\end{itemize} 
+No girogrupo de Möbius podemos definir algumas operações extremamente importantes para a construção de redes neurais: \begin{itemize}
+    \item o \textit{produto por escalar de Möbius} é definido por \begin{equation}
+        \lambda \otimes x = \begin{cases}
+            \tanh(\lambda \arctanh ||x||)\frac{x}{||x||}, &\text{se } x \neq 0, \\ 0, &\text{se } x = 0;
+        \end{cases}
+    \end{equation}
+
+    \item podemos aplicar uma matriz $M \in M_n(\mathbb{R})$ em $x \in \mathbb{B}^n$ pela operação \begin{equation}
+        M^\otimes(x) = \tanh\left(\frac{||Mx||}{||x||}\arctanh ||x||\right)\frac{Mx}{||Mx||};
+    \end{equation}
+\end{itemize}
+
+Utilizando essas operações e algum conhecimento sobre geodésicas em $\mathbb{B}^n$ podemos derivar expressões explicitas para os mapas exponencial e logarítmico: \begin{equation}
+    \Exp_p(v) = p \oplus \left(\tanh\left(\frac{\lambda_p||v||}{2}\right)\frac{v}{||v||}\right) \quad \text{e} \quad \Log_p(q) = \frac{2}{\lambda_p}\arctanh(||-x \oplus y||)\frac{-x \oplus y}{||-x \oplus y||}.
+\end{equation} onde $p, q \in \mathbb{B}^n$, $v \in T_p\mathbb{B}^n$ e $\lambda_x$ é um fator de conformalidade entre a métrica euclidiana e a métrica do disco de Poincaré, isso é, $\lambda_p$ é dado por \begin{equation}
+    \lambda_p = \frac{2}{1 - ||p||^2}
+\end{equation} e claramente satisfaz \begin{equation}
+    4\frac{dx_1^2 + \cdots + dx_n^2}{(1 - x_1^2 - \dots - x_n^2)^2} = \lambda_x^2(dx_1^2 + \cdots + dx_n^2),
+\end{equation} ou seja, se $\mathfrak{g}$ é a métrica em $\mathbb{R}^n$ e $\mathfrak{g}_B$ é a métrica no $n$-disco, então $\mathfrak{g}_B = \lambda_x^2 \mathfrak{g}$.     
+
+Se estamos estudando um conjunto de dados em $\mathbb{B}^n$, é interessante sabermos computar a média desses dados. Existem três maneiras de fazer isso: \begin{itemize}
+    \item se os dados fazer parte de um grafo, então podemos computar a média de todos os vizinhos $x_j$ de um ponto $x_i \in \mathbb{B}^n$ pela fórmula \begin{equation}
+        \mu = \Exp_{x_i}\left(\sum_{j \in \mathcal{N}(i)} w_{ij} \Log_{x_i}(x_j)\right),
+    \end{equation} onde cada $w_{ij} \in \mathbb{R}$ é um peso associado a aresta que liga $x_i$ com $x_j$;
+
+    \item se $x_1, \dots, x_n \in \mathbb{K}^n$ (agora estamos no disco e Beltrami-Klein), podemos computar o \textit{ponto médio de Einstein} por \begin{equation}
+        \mu = \frac{\sum_{i = 1}^n \frac{x_i}{||x_i||^2}}{\sum_{i = 1}^n \frac{1}{||x_i||^2}};
+    \end{equation}
+
+    \item por último, podemos utilizar as operações já definidas para construir o ponto médio entre $x_1, \dots, x_n \in \mathbb{B}^n$, que é chamado de \textit{ponto giromédio} dado por \begin{equation}
+        m(x_1, \dots, x_n, \alpha) = \frac{1}{2} \otimes \left(\sum_{i = 1}^n \frac{\frac{2\alpha_i}{||x_i||^2}}{\sum_{j = 1}^n \alpha_j\left(\frac{2}{||x_i||^2} - 1\right)}x_i\right),
+    \end{equation} onde $\alpha = (\alpha_1, \dots, \alpha_n)$ é uma lista de pesos para cada $x_i$.
+\end{itemize}
 
 \section{Redes neurais}
 
