@@ -20,6 +20,9 @@
 \usepackage{biblatex}
 \addbibresource{bib.bib}
 \usepackage{csquotes}
+\usepackage{pythonhighlight}
+\usepackage{algorithmic}
+\usepackage[portuguese, ruled, lined]{algorithm2e}
 
 %quiver
 \tikzset{curve/.style={settings={#1},to path={(\tikztostart)
@@ -503,7 +506,7 @@ Utilizando essas operações e algum conhecimento sobre geodésicas em $\mathbb{
 \end{equation} ou seja, se $\mathfrak{g}$ é a métrica em $\mathbb{R}^n$ e $\mathfrak{g}_B$ é a métrica no $n$-disco, então $\mathfrak{g}_B = \lambda_x^2 \mathfrak{g}$.     
 
 Se estamos estudando um conjunto de dados em $\mathbb{B}^n$, é interessante sabermos computar a média desses dados. Existem três maneiras de fazer isso: \begin{itemize}
-    \item se os dados fazer parte de um grafo, então podemos computar a média de todos os vizinhos $x_j$ de um ponto $x_i \in \mathbb{B}^n$ pela fórmula \begin{equation}
+    \item se os dados fazem parte de um grafo, então podemos computar a média de todos os vizinhos $x_j$ de um ponto $x_i \in \mathbb{B}^n$ pela fórmula \begin{equation}
         \mu = \Exp_{x_i}\left(\sum_{j \in \mathcal{N}(i)} w_{ij} \Log_{x_i}(x_j)\right),
     \end{equation} onde cada $w_{ij} \in \mathbb{R}$ é um peso associado a aresta que liga $x_i$ com $x_j$;
 
@@ -518,7 +521,159 @@ Se estamos estudando um conjunto de dados em $\mathbb{B}^n$, é interessante sab
 
 \section{Redes neurais}
 
-\section{Misturando tudo}
+\subsection{\texorpdfstring{\pyth{PyTorch}}{PyTorch} e tensores}
+
+Para nossos estudos, definiremos um tensor de maneira indutiva. Um tensor de dimensão $0$ é um número. Um tensor de dimensão $1$ é uma lista de números, e seu formato é o número de elementos, denotado por $(n)$. Um tensor de dimensão $2$ é uma lista de tensores de dimensão $1$, que devem ter todos o mesmo formato, ou seja, o mesmo número de elementos. O formato de um tensor bidimensional é um par ordenado $(m,n)$, onde $m$ é o número de tensores de dimensão $1$ que o compõe, e $n$ o número de elementos de cada um desses tensores unidimensionais.
+
+De maneira indutiva, um tensor de dimensão $n$ é uma lista de tensores de dimensão $n-1$, que devem todos ter o mesmo formato. O formato de um tensor $n$-dimensional é uma lista de $n$ números $(x_1, \dots, x_n)$, onde $x_1$ é o número de tensores $(n-1)$-dimensionais que o compõe, e $(x_2, \dots, x_n)$ é o formato de cada um deles.
+
+Vamos agora começar a brincar com programação. Utilizaremos \pyth{Python} com a biblioteca \pyth{PyTorch} para mexer com aprendizado profundo. Para importar essa biblioteca, utilizamos \pyth{import torch}. O próximo passo é entender como funcionam os tensores. Para criar um tensor, utilizamos o comando \pyth{torch.tensor()}. Dentro dos parênteses, podemos colocar $4$ parâmetros (existem mais deles, mas esses são os importantes): \begin{itemize}
+    \item o primeiro parâmetro é um tensor, ou seja, uma lista de listas de listas e etc. assim como definimos nos parágrafos acima;
+    \item \pyth{dtype} recebe um tipo de dado, que o tensor irá armazenar em cada uma de suas entradas;
+    \item \pyth{device} recebe o dispositivo no qual o tensor irá ser armazenado, como uma \textit{CPU}, uma \textit{GPU} ou uma \textit{TPU};
+    \item \pyth{requires_grad} recebe \pyth{True} ou \pyth{False} e, em caso de \pyth{True}, computa o gradiente do tensor (veremos o que é isso mais para frente) e o armazena na memória.
+\end{itemize}
+
+Podemos retornar o formato, o tipo dos dados ou a dimensão de um tensor pelos atributos \pyth{shape}, \pyth{dtype} e \pyth{ndim}. Por exemplo, considere o tensor: \begin{python}
+import torch # A biblioteca foi importada pois eh a primeira vez que escrevemos codigo em
+# bloco, mas isso sera evitado nas proximas instancias.
+
+TENSOR = torch.tensor([[1, 2],
+                       [3, 4]])
+\end{python}
+Podemos utilizar os atributos comentados acima para retornar certas informações importantes: \begin{itemize}
+    \item \pyth{TENSOR.shape} vai retornar \pyth{torch.Size([2, 2])}, visto que \pyth{TENSOR} tem formato $(2,2)$;
+    \item \pyth{TENSOR.dtype} vai retornar \pyth{torch.int64}, visto que as entradas da matriz são números inteiros;
+    \item \pyth{TENSOR.ndim} vai retornar \pyth{2}, visto que o tensor em questão tem dimensão $2$, que é a quantidade de números do seu formato.
+\end{itemize}
+
+Podemos indexar tensores. Para retirar um número de um tensor, precisamos especificar as coordenadas desse número em cada dimensão do tensor. Por exemplo, considere o código abaixo. \begin{python}
+TENSOR = torch.tensor([[[1, 2, 3],
+                        [4, 5, 6],
+                        [7, 8, 9]],
+                        
+                       [[10, 11, 12],
+                        [13, 14, 15],
+                        [16, 17, 18]],
+                        
+                       [[19, 20, 21],
+                        [22, 23, 24],
+                        [25, 26, 27]]])
+
+print(TENSOR.shape)
+\end{python}
+
+O output desse código será, como vimos acima, \pyth{torch.Size([3, 3, 3])}. É importante notar que o \pyth{Python} sempre começa a contar do $0$, e não é diferente quanto trabalhamos com \pyth{PyTorch}.
+
+Para descobrirmos a posição em que o número $15$ está, basta fazermos o processo de trás pra frente. Primeiro, percebemos que ele está na segunda matriz, então ele faz parte de \pyth{TENSOR[1]}. Nessa matriz, ele está segunda linha, portanto ele é um elemento de \pyth{TENSOR[1,1]}. Por fim, ele é o terceiro elemento dessa linha, dessa maneira temos \pyth{TENSOR[1,1,2] = 15}. De fato, se após o código acima escrevermos \pyth{print(TENSOR[1,1,2])} o resultado será precisamente \pyth{tensor(15)}. O retorno não é precisamente \pyth{15} pois elementos de tensores também são tensores, mas isso é apenas uma tecnicalidade.
+
+Existem diversas maneiras de construir tensores em \pyth{Python}. Além de \pyth{torch.tensor}, podemos utilizar \begin{itemize}
+    \item \pyth{torch.ones}, que recebe diversos argumentos, um para cada dimensão que você deseja que o tensor tenha. Esses argumentos precisam ser números maiores do que $1$ e representam quantas entradas o tensor terá nas respectivas dimensões. Por exemplo, \pyth{torch.ones(2,2,2)} resulta no tensor abaixo;
+    \begin{python}
+tensor([[[1., 1.],
+         [1., 1.]],
+
+        [[1., 1.],
+         [1., 1.]]])
+    \end{python}
+
+    \item \pyth{torch.zeros} é idêntico ao \pyth{torch.ones}, mas o tensor terá $0$ em todas as entradas;
+    
+    \item \pyth{torch.rand} recebe argumentos da mesma maneira que os comandos acima, mas as entradas do tensor serão números aleatórios no intervalo $[0,1[$ gerados a partir de uma distribuição uniforme;
+    
+    \item \pyth{torch.zeros_like} e \pyth{torch.ones_like} ambos recebem um tensor como entrada e retornam um outro tensor cheio de zeros, no primeiro caso, ou uns, no segundo, que tenha o mesmo formato do tensor recebido;
+    
+    \item \pyth{torch.full_like} recebe um tensor e um valor numérico, e cria um tensor com o mesmo formato do tensor recebido, mas em que todas as entradas são idênticas ao valor recebido;
+
+    \item \pyth{torch.arange} recebe três parâmetros numéricos \pyth{start}, \pyth{end} e \pyth{step}. Ele retorna um tensor unidimensional que possui valores em $[start, end[$, começando em \pyth{start} e com um espaçamento de tamanho \pyth{step} entre cada valor. 
+\end{itemize}
+
+Tensores só aceita valores numéricos, mas mesmo dentre esses existem vários tipos que podem ser utilizados, e muitas vezes esses tipos geram conflitos quando vamos operar com tensores. É importante portanto aprender a converter tensores de um tipo para outro.
+
+É importante notar que conversão entre tipos não vai, na maioria das vezes, alterar os valores armazenados no tensor. A diferença, por exemplo, é que o tensor \pyth{[1]} possui um valor do tipo inteiro, enquanto o tensor \pyth{[1.]} possui um valor do tipo ponto flutuante. O problema acontece quando convertemos pontos flutuantes para inteiros, visto que acontece um processo de arredondamento.
+
+\begin{python}
+TENSOR = torch.tensor([1.44]) # TENSOR.dtype = torch.float32
+print(TENSOR.type(torch.int64))
+\end{python}
+
+O código acima converte um tensor do tipo \pyth{torch.float32} para um tensor do tipo \pyth{torch.int64} e exibe o resultado. Ao executarmos esse código em uma IDE, percebemos que o retorno é \pyth{tensor([1])}, visto que o tensor resultante deve possuir apenas inteiros. É importante que, ao contrário do que pensamos que seria o correto, o arredondamento é sempre feito para baixo, e não seguindo a regra do $5$ como nos acostumamos. É possível achar uma lista com todos os possíveis tipos de valores na documentação do \pyth{PyTorch}.
+
+Vamos agora aprender a operar com tensores. Existem cinco operações importantes: \begin{itemize}
+    \item a adição de tensores se dá elemento a elemento, ou seja, se \pyth{T} e \pyth{S} são $k$-tensores (tensores com $k$ dimensões), então dado \pyth{K = T + S} temos \pyth{K[x1, ..., xk] = T[x1, ..., xk] + S[x1, ..., xk]}. Por exemplo, \begin{python}
+T = torch.tensor([[1, 2],
+                  [3, 4]])
+S = torch.tensor([[5, 6]
+                  [7, 8]])
+K = T + S
+print(K[0,1])
+    \end{python} retorna \pyth{tensor(8)}, já que \pyth{T[0,1] + S[0,1] = 2 + 6 = 8}.
+
+    \item a subtração, a multiplicação e a divisão funcionam exatamente da mesma maneira, e são calculadas por \pyth{T - S}, \pyth{T * S} e \pyth{T / S} respectivamente. É importante notar que, para a divisão, o tensor \pyth{S} não pode possuir valores valendo \pyth{0};
+\end{itemize}
+
+A última operação que vamos analisar é o produto matricial, mas esse é assustadoramente mais complicado então vamos ter que fazer tudo com calma. Ele é definido a partir e vários casos, da seguinte maneira: sejam \pyth{T} e \pyth{S} dois tensores. Se \begin{itemize}
+    \item \pyth{T} e \pyth{S} tiverem formato $(n)$, então \pyth{K = torch.matmul(T, S)} tem formato $()$ e é dado por \begin{equation}
+        K = \sum_{j = 0}^{n - 1} T[j] \cdot S[j];
+    \end{equation}
+
+    \item \pyth{T} tem formato $(n)$ e \pyth{S} tem formato $(n, m)$, então \pyth{K = torch.matmul(T, S)} tem formato $(m)$ e é dado por \begin{equation}
+        K[i] = \sum_{j = 0}^{n-1} T[j] \cdot S[j, i];
+    \end{equation}
+
+    \item \pyth{T} tem formato $(n, m)$ e \pyth{S} tem formato $(m)$, então \pyth{K = torch.matmul(T, S)} tem formato $(n)$ e é dado por \begin{equation}
+        K[i] = \sum_{j = 0}^{m-1} T[i,j] \cdot S[j];
+    \end{equation}
+
+    \item \pyth{T} tem formato $(n,m)$ e \pyth{S} tem formato $(m,p)$, então \pyth{K = torch.matmul(T, S)} tem formato $(n,p)$ e é dado por \begin{equation}
+        K[i,j] = \sum_{k = 0}^{m-1} T[i, k] \cdot S[k, j];
+    \end{equation}
+
+    \item \pyth{T} tem formato $(x_{k-1})$ e \pyth{S} tem formato $(x_1, \dots, x_k)$ com $k > 2$, então \pyth{K = torch.matmul(T, S)} tem formato $(x_1, \dots, x_{k-2}, x_k)$ e é dado por \begin{equation}
+        K[i_1, \dots, i_{k-1}] = \sum_{j = 0}^{x_{k-1} - 1} T[j] \cdot S[i_1, \dots, i_{k-2}, j, i_{k-1}]
+    \end{equation}
+
+    \item \pyth{T} tem formato $(x_1, \dots, x_k)$ com $k > 2$ e \pyth{S} tem formato $(x_{k})$, então \pyth{K = torch.matmul(T, S)} tem formato $(x_1, \dots, x_{k-1})$ e é dado por \begin{equation}
+        K[i_1, \dots, i_{k-1}] = \sum_{j = 0}^{x_k - 1} T[i_1, \dots, i_{k-1}, j] \cdot S[j];
+    \end{equation}
+
+    \item \pyth{T} tem formato $(n, x_{k-1})$ e \pyth{S} tem formato $(x_1, \dots, x_k)$ com $k > 2$, então \pyth{K = torch.matmul(T, S)} tem formato $(x_1, \dots, x_{k-2}, n, x_k)$ e é dado por \begin{equation}
+        K[i_1, \dots, i_k] = \sum_{j = 0}^{x_{k-1} - 1} T[i_{k-1},j] \cdot S[i_1, \dots, i_{k-2}, j, i_k];
+    \end{equation}
+
+    \item \pyth{T} tem formato $(x_1, \dots, x_k)$ com $k > 2$ e \pyth{S} tem formato $(x_k, m)$, então \pyth{K = torch.matmul(T, S)} tem formato $(x_1, \dots, x_{k-1}, m)$ e é dado por \begin{equation}
+        K[i_1, \dots, i_k] = \sum_{j = 0}^{x_k - 1} T[i_1, \dots, i_{k-1}, j] \cdot S[j, i_k];
+    \end{equation}
+\end{itemize}
+
+Os últimos dois casos são os mais complicados. Primeiro, definimos que dois formatos $(x_1, \dots, x_k)$ e $(y_1, \dots, y_s)$ são \textit{transmissíveis} se $k, s \geq 1$, ou seja, se ambos não são escalares, e se, para todo $i$ com $1 \leq i \leq \max\{k, s\}$ temos que \begin{itemize}
+    \item $y_i$ ou $x_i$ não existem, ou
+    \item $y_i = 1$ ou $x_i = 1$ ou,
+    \item $x_i = y_i$.
+\end{itemize}
+Se $k > 2$, \pyth{T} tem formato $(x_1, \dots, x_k)$ e \pyth{S} tem formato $(y_1, \dots, y_k)$, então se $(x_1, \dots, x_{k-2})$ e $(y_1, \dots, y_{k-2})$ são transmissíveis e $x_k = y_{k-1}$, podemos calcular \pyth{K = torch.matmul(T, S)}, que tem formato \begin{align}
+    (\max\{x_1, y_1\}, \dots, \max\{x_{k-2}, y_{k-2}\}, x_{k-1}, y_k)
+\end{align} e é dado por \begin{equation}
+    K[i_1, \dots, i_k] = \sum_{j = 0}^{x_k - 1} T[\alpha_1, \dots, \alpha_{k-2}, i_{k-1}, j] \cdot S[\beta_1, \dots, \beta_{k-2}, j, i_k],
+\end{equation} onde $\alpha_n = \min(i_n, x_n - 1)$ e $\beta_m = \min(i_m, y_m - 1)$.
+
+O último caso é o que acontece se os tensores não tem a mesma dimensão. Se \pyth{T} tem formato $(x_1, \dots, x_k)$ e \pyth{S} tem formato $(y_1, \dots, y_s)$ com $k \neq s$ e $k, s > 2$, então temos dois casos: $k > s$ ou $k < s$. Se $k > s$, vamos construir um novo tensor \pyth{S1} com dimensão $k$ e formato dado por $(1, \dots, 1, y_1, \dots, y_s)$ onde as $k-s$ primeiras entradas valem $1$. Esse tensor, claro, é dado por \begin{equation}
+    S_1[0, ..., 0, i_1, \dots, i_s] = S[i_1, \dots, i_s].
+\end{equation} Ao assumirmos que \pyth{T} e \pyth{S} são transmissíveis (ou seja, os seus formatos menos as duas últimas dimensões são transmissíveis), então \pyth{T} e \pyth{S1} também serão, e portanto pelo caso anterior podemos calcular \pyth{K = torch.matmul(T,S1)}, que será precisamente o tensor resultante ao calcularmos \pyth{K = torch.matmul(T, S)}. O caso $k < s$ é análogo, porém o tensor que será modificado é o \pyth{T}.
+
+Para terminarmos a seção, podemos construir um análogo à transposição de matrizes, mas para tensores. Se \pyth{T} é um tensor de formato $(x_1, \dots, x_k)$, o seu \textit{transposto} é de formato $(x_k, \dots, x_1)$ e é dado por \begin{equation}
+    T^\perp[i_1, \dots, i_k] = T[i_k, \dots, i_1].
+\end{equation} Para calcular o transposto pelo \pyth{PyTorch}, basta utilizar \begin{python}
+torch.permute(T,list(torch.arange(T.ndim - 1, -1, -1))).
+\end{python} A função \pyth{torch.permute} recebe um tensor de dimensão $k$ e uma lista com os números de $0$ até $k-1$ em qualquer ordem. Ela retorna então um novo tensor $k$-dimensional, contendo as mesmas entradas do tensor original, mas com o formato trocado de maneira a respeitar a lista de números. Para ser um pouco mais construtivo, imagine que \pyth{T} tem formato $(x_1, \dots, x_k)$. Se \pyth{l = [n1, ..., nk]} é uma lista com os inteiros de $0$ até $k-1$, então o tensor \pyth{T1 = torch.permute(T, l)} é dado por \begin{equation}
+    T_1[i_1, \dots, i_k] = T[i_{n_1 + 1}, \dots, i_{n_k + 1}].
+\end{equation} Note que, para transpor um tensor $k$-dimensional, basta que a lista passada como argumento de \pyth{torch.permute} seja \pyth{[k-1, ..., 0]}, que é justamente o resultado de \begin{python}
+list(torch.arange(T.ndim - 1, -1, -1))
+\end{python}
+
+\subsection{Trabalhando com tensores}
+
+
 
 \nocite{*}
 \printbibliography

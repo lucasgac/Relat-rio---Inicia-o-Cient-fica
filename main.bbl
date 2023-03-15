@@ -104,6 +104,20 @@
       \verb https://www.mathi.uni-heidelberg.de/~lee/Soeren05.pdf
       \endverb
     \endentry
+    \entry{pyt}{misc}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{note}{Acessado: 01-03-2023}
+      \field{title}{PyTorch documentation - PyTorch 1.13 documentation}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://pytorch.org/docs/stable/index.html
+      \endverb
+      \verb{url}
+      \verb https://pytorch.org/docs/stable/index.html
+      \endverb
+    \endentry
     \entry{tu1}{book}{}
       \name{author}{1}{}{%
         {{hash=bd797f5054139f44f22b71934a7e9d84}{%
